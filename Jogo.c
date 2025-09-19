@@ -6,6 +6,87 @@ int morte(){
     printf("\nFim de jogo\n");
     return 1;
 }
+int floresta(){
+int escolhaFloresta;
+    printf("Você caminha até uma floresta que parece idêntica às que você via no seu dia a dia\n");
+    sleep(2);
+    printf("eventualmente adentrando, ao chegar você se depara com animais silvestres.\n");
+    sleep(2);
+    printf("Entrar mais a fundo da floresta?\n");\
+    printf("1-sim\n");
+    printf("2-não\n");
+    scanf("%d", &escolhaFloresta);
+    if(escolhaFloresta == 1){
+        printf(" Esses animais são exatamente iguais aos que você conhece\n");
+        sleep(2);
+        printf("devorando carne de maneira esfomeada e desesperada\n");
+        sleep(2);
+        printf("porém havia um detalhe do qual você não havia se tocado");
+        sleep(1);
+        printf(".");
+        sleep(1);
+        printf(".");
+        sleep(1);
+        printf(".\n");
+        sleep(2);
+        printf("esses animais estavam de olho em você\n");
+        sleep(2);
+        printf("você foi atacado e devorado de maneira brutal\n");
+        return morte();
+    }else{
+        return ritual();
+    }return 0;
+}
+int ritual(){
+    int respostaRitual;
+    printf("Após se libertar, você foge da sala...\n");   
+    sleep(1);
+    printf(" o ambiente do lugar em que você está parece macabro.\n");
+    sleep(1);
+    printf("algo totalmente distinto de onde você e seu amigo estavam\n");
+    sleep(1);
+    printf("ao pensar nisso você se lembra do seu amigo, \no que será que aconteceu com ele, vocês foram sequestrados?");
+    sleep(2);
+    printf(" Finalmente após o choque de estar ali \nvocê começa a se questionar onde está, \no que aconteceu e quem eram aquelas figuras.\n");
+    sleep(2);
+    printf(" Você escuta vozes distantes, semelhante a uma conversa, \nporém muito longe, você segue a voz até chegar numa sala extremamente iluminada.\n");
+    sleep(2);
+    printf("Você tenta tirá-lo de lá, porém uma poderosa onda de choque perturba o ritual, \nWes cai no chão e a cadeira se desintegra, como se nunca existisse");
+    sleep(2);
+    printf(" o local antes extremamente iluminado começa a escurecer, \num abismo se forma entre o chão do ritual puxando tudo ao seu redor \ncom uma força avassaladora.\n");
+    sleep(2);
+    printf("Quando você se dá conta, está em volta de luz, \numa luz violenta, sem cor, sem cheiro, vazia, \ncaindo e ao mesmo tempo subindo...\n");
+    sleep(2);
+    printf(", sem nenhuma noção de espaço ou tempo. Você fecha os olhos e dispersa sua consciência.\n");
+    sleep(2);
+        do{
+    printf("Você acorda, em um mundo confuso, como se tivesse acabado de ser criado, você se levanta e observa 3 lugares à distância:\n");
+    printf("oque você faz?\n");
+    sleep(1);
+    printf("1-ir para um castelo feito de tijolos opacos, distorcendo a luz próxima.\n");
+    printf("2-ir para uma cidade sem nenhum sinal de vida. \n");
+    printf("3-uma floresta normal (bizarramente comum).\n");
+    printf("Escolha: \n");
+    scanf("%d", &respostaRitual);
+    if(respostaRitual == 1){
+        printf("você decide caminhar até o castelo, não estava tão longe,\n");
+        sleep(2);
+        printf("ao menos era o que parecia, ao caminhar você sentia \ncomo se não avançasse do lugar\n");
+        sleep(2);
+        printf("como se o castelo estivesse se movendo para longe de você\n");
+        sleep(2);
+        printf("parecia até que tinha uma barreira te impedindo de avançar. Você eventualmente desiste.\n");
+        sleep(2);
+    }else if(respostaRitual == 2){
+        printf("Você caminha até uma cidade, não parecia estar abandonada \nmas você também não via nenhum sinal de vida, nem rios, nem animais e nem pessoas.\n");
+        printf(" Você adentra uma casa central da cidade atraído pelo seu tamanho e arquitetura.\n");///history option
+        //return next phase
+    }else if(respostaRitual == 3){
+        return floresta();
+    }
+} while (respostaRitual == 2);
+    return 0;
+}
 int Escapar(){
     int resposta;
 
@@ -32,7 +113,7 @@ int Escapar(){
             printf("\nVocê tenta se soltar... e por sorte o braço esquerdo da cadeira,\n");
             sleep(2);
             printf("já danificado, se solta, permitindo sua libertação!\n");
-            return 0; // sobreviveu
+            return ritual();
         } 
         else if (resposta == 2){
             printf("\nVocê observa a sala mais atentamente...\n");
@@ -68,35 +149,6 @@ int Escapar(){
 
     return 0;
 }
-int ritual(){
-    printf("Após se libertar, você foge da sala...\n");   
-    sleep(1);
-    printf(" o ambiente do lugar em que você está parece macabro.\n");
-    sleep(1);
-    printf("algo totalmente distinto de onde você e seu amigo estavam\n");
-    sleep(1);
-    printf("ao pensar nisso você se lembra do seu amigo, \no que será que aconteceu com ele, vocês foram sequestrados?");
-    sleep(2);
-    printf(" Finalmente após o choque de estar ali \nvocê começa a se questionar onde está, \no que aconteceu e quem eram aquelas figuras.\n");
-    sleep(2);
-    printf(" Você escuta vozes distantes, semelhante a uma conversa, \nporém muito longe, você segue a voz até chegar numa sala extremamente iluminada.\n");
-    sleep(2);
-    printf("Você tenta tirá-lo de lá, porém uma poderosa onda de choque perturba o ritual, \nWes cai no chão e a cadeira se desintegra, como se nunca existisse");
-    sleep(2);
-    printf(" o local antes extremamente iluminado começa a escurecer, \num abismo se forma entre o chão do ritual puxando tudo ao seu redor \ncom uma força avassaladora.\n");
-    sleep(2);
-    printf("Quando você se dá conta, está em volta de luz, \numa luz violenta, sem cor, sem cheiro, vazia, \ncaindo e ao mesmo tempo subindo...\n");
-    sleep(2);
-    printf(", sem nenhuma noção de espaço ou tempo. Você fecha os olhos e dispersa sua consciência.\n");
-    sleep(2);
-    printf("Você acorda, em um mundo confuso, como se tivesse acabado de ser criado, você se levanta e observa 3 lugares à distância:\n");
-    
-    
-    
-    
-    return 0;
-}
-
 int main() {
     setlocale(LC_ALL, "pt_BR.UTF-8");
 
@@ -117,35 +169,9 @@ int main() {
         return 0;
     }    printf("Você é um jornalista junior chamado Walter, buscando oportunidades de alavancar sua carreira \njunto com seu amigo Wes, tentam buscar reportagens que consigam fazer isso para os dois, e ao procurarem reportagens, \nem suas buscas eles acabam ouvindo relatos de movimentação suspeita um certo lugar, \num hospício,há muito tempo fechado, este hospício foi palco de múltiplas denúncias de torturas e desaparecimentos, \ne até mesmo relatos de pactos a algum tipo de entidade da crença local \nsegundo moradores de um vilarejo próximo, eles decidem investigar. \nNo entanto, ao adentrar a fundo naquele lugar, figuras não identificadas \nos pegaram desprevenidos, apagando os dois jornalistas...\n");
     printf("carregando...14");
-    sleep(1);
-    printf(",13");
-    sleep(1);
-    printf(",12");
-    sleep(1);
-    printf(",11");
-    sleep(1);
-    printf(",10");
-    sleep(1);
-    printf(",9");
-    sleep(1);
-    printf(",8");
-    sleep(1);
-    printf(",7");
-    sleep(1);
-    printf(",6");
-    sleep(1);
-    printf(",5");
-    sleep(1);
-    printf(",4");
-    sleep(1);
-    printf(",3");
-    sleep(1);
-    printf(",2");
-    sleep(1);
-    printf(",1\n");
-    sleep(1);
+    sleep(5);
 
-    //LOOP DE GAMEPLAY
+    //LOOP DE Jogo
     while (jogarNovamente) {
         Escapar();
 
