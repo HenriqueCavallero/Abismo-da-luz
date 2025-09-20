@@ -7,6 +7,10 @@ int visitouCastelo = 0;
 int visitouFloresta = 0;
 int vidas = 3;
 int checkpoint = 0;
+//declaração de funções
+int ritual();
+int morte();
+int main();
 
 int cano(){
     return 0;
