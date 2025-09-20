@@ -8,11 +8,59 @@ int visitouFloresta = 0;
 int vidas = 3;
 int checkpoint = 0;
 
+int cano(){
+    return 0;
+}
+
+int cabana(){
+return 0;
+}
+
 void resetGame() {
     vidas = 3;
     checkpoint = 0;
     visitouCastelo = 0;
     visitouFloresta = 0;
+}
+
+int cidade(){
+    checkpoint = 2;
+    int escolhaCidade; 
+        
+        printf("Pergunta: O que eu devo fazer?\n");
+        printf("1- Sair da cabana discretamente e fugir\n");
+        printf("2- Voltar a dormir \n");//opção ruim
+        printf("3- Acertar Wes com um pedaço de cano da sua mochila \n");//opção da história
+        printf("4- Acordar Wes e enchê-lo de perguntas.\n");
+        printf("Escolha: ");
+        scanf("%d", &escolhaCidade);
+        if(escolhaCidade == 1){
+            printf("Você suspeita de algo, não confia bem naquele Wes\n");
+            sleep(2);
+            printf("você sai de fininho com suas coisas da cabana, ao sair de perto da cabana");
+            sleep(2);
+            printf("uma figura se aproxima por trás de você");
+            sleep(1);
+            printf(".");
+            sleep(1);
+            printf(".");
+            sleep(1);
+            printf(".\n");
+            printf("você sente algo perfurando sua coluna e atravessando seus ossos.\n");
+            return morte();
+        }
+        else if(escolhaCidade == 2){
+            return cabana();
+        }
+        else if(escolhaCidade == 3){
+            return cano();
+        }
+        else if(escolhaCidade == 4){}
+        else{
+            printf("\nOpção inválida. Tente novamente.\n");
+
+        }
+    return 0;
 }
 
 int floresta(){
@@ -91,13 +139,67 @@ int ritual(){
             visitouCastelo = 1; // marca como visitado
         } 
         else if (respostaRitual == 2) {
-            printf("\nVocê caminha até uma cidade, não parecia estar abandonada,\n");
-            sleep(2);
-            printf("mas você também não via nenhum sinal de vida: nem rios, nem animais, nem pessoas.\n");
-            sleep(3);
-            printf("Você adentra uma casa central da cidade, atraído pelo seu tamanho e arquitetura.\n");
-            sleep(3);
-            // aqui poderia seguir para outra parte da história
+        printf("\nVocê caminha até uma cidade, não parecia estar abandonada,\n");
+        sleep(2);
+        printf("mas você também não via nenhum sinal de vida: nem rios, nem animais, nem pessoas.\n");
+        sleep(3);
+        printf("Você adentra uma casa central da cidade, atraído pelo seu tamanho e arquitetura.\n");
+        sleep(3);
+        printf("Para sua surpresa, você se reencontra com Wes, \nele parece estar confuso e assustado mas ao lhe ver \nele pareceu ficar aliviado");
+        sleep(3);
+        printf(" você pergunta se ele está bem, ele diz que não, \nele explicou que acordou naquela sala \npouco antes de você entrar naquele momento\n");
+        sleep(3);
+        printf(" mas se recusa a falar o que aconteceu lá, ele propõe que \nencontremos uma maneira de fugir daquele lugar");
+        sleep(3);
+        printf(" você sente que ele está estranho, você se pergunta o que ele passou \ne o que fizeram com ele, mas decide não perguntar");
+        sleep(3);
+        printf("Enquanto caminham seu subconsciente investiga este lugar,\nele parece tão real, ao mesmo tempo você tem a estranha sensação \nque o próprio lugar parece estar tentando pregar uma peça em você");
+        sleep(4);
+        printf(" você se pergunta se Wes está sentindo a mesma coisa que você, \nmas não pergunta, você não sabe como ele está realmente.. ");
+        sleep(3);
+        printf("após uma longa caminhada, você está exausto de tanto andar, \ne já estava escurecendo, por sorte, uma cabana está \napenas a alguns metros de vocês");
+        sleep(3);
+        printf("e então você decide perguntar ao Wes se ele quer parar, e passar a noite ali:\n");
+        sleep(3);
+        printf("Walter: Wes, já estamos caminhando a horas, e já está anoitecendo, \nvamos parar e descansar naquela cabana, está bem?");
+        sleep(3);
+        printf("Wes se vira para você com um rosto indecifrável e então fala expressando um alívio quase teatral…\n");
+        sleep(3);
+        printf("Wes: tudo bem, eu já estava quase caindo no chão de cansaço, vamos lá amigo.\n");
+        sleep(3);
+        printf("Vocês chegam em uma cabana abandonada, \no local estava até que em boas condições, o que contrasta com o cenário da cidade \ndesolada onde você encontrou Wes");
+        sleep(3);
+        printf(" alguém tinha passado por lá antes? \nVocê para de pensar demais nisso e foca em descansar");
+        sleep(3);
+        printf("foi um longo caminho, luzes misteriosas, \ncaminhos confusos e reencontros inesperados, \né melhor descansar para o que há de vir amanhã");
+        sleep(3);
+        printf(" Vocês improvisam um travesseiro com uma mochila e algumas \nroupas e se cobrem com um pedaço pano longo coletado na cidade,\n");
+        sleep(3);
+        printf("estava um pouco sujo mas estava confortável, vocês deitam \npróximos um do outro para aproveitar o máximo do pano\n");
+        sleep(3);
+        printf(" Você decide ter uma última conversa com Wes antes de dormir:\n");
+        sleep(2);
+        printf("Walter: Wes?");
+        sleep(2);
+        printf("Wes: Problemas para dormir?");
+        sleep(2);
+        printf("Walter: Mais ou menos. Me diz, o que aconteceu contigo depois \ndaquela explosão de luz em que nos separamos naquela sala?\n");
+        sleep(3);
+        printf("Wes: Comigo? Não aconteceu nada, ainda sou eu mesmo hahahaha.\n");
+        sleep(3);
+        printf("Walter: ok então… Boa noite.\n");
+        sleep(2);
+        printf("Wes: boa noite amigo, descanse bem.\n");
+        sleep(2);
+        printf("De repente, você sente como se algo estivesse errado, Wes não é assim,\n");
+        sleep(3);
+        printf("uma atitude brincalhona e confiante, não estava com aquele jeito fofo e meigo que faz parte de seu charme\n");
+        sleep(3);
+        printf("ele também parecia mais alto do que o de costume, \ncoisa de alguns poucos centímetros de diferença e o modo como ele \nronca também não está igual como era antes\n");
+        sleep(4);
+        printf("um sentimento de insegurança lhe toma pela noite e você se levanta:\n");
+        sleep(1);
+        return cidade();
         } 
         else if (respostaRitual == 3 && visitouFloresta == 0) {
             return floresta();
@@ -239,17 +341,19 @@ int morte(){
             printf("Obrigado por jogar!\n");
             return 0;
         }
-        else{
+        else if(escolha == 1){
             printf("Reiniciando do último checkpoint...\n");
-        }
-        sleep(3);
+            sleep(3);
 
-
-        if(checkpoint == 0){
-            return Escapar();
-        }
-        else if(checkpoint == 1){
-            return ritual();
+            if(checkpoint == 0){
+                return Escapar();
+            }
+            else if(checkpoint == 1){
+                return ritual();
+            }
+            else if(checkpoint == 2){
+                return cidade();
+            }
         }
     } 
     else {
@@ -263,7 +367,7 @@ int morte(){
         scanf("%d", &escolhaFinal);
         if (escolhaFinal == 1) {
             resetGame();
-            return Escapar();
+            return main();
         } else {
             printf("Obrigado por jogar!\n");
             return 0;
@@ -273,7 +377,8 @@ int morte(){
 }
 
 int main() {
-    setlocale(LC_ALL, "pt_BR.UTF-8");
+    
+    setlocale(LC_ALL, "portuguese");
 
     int verificadorComeco;
     int continuar;
