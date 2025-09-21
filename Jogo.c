@@ -2,18 +2,24 @@
 #include <unistd.h>
 #include <locale.h>
 
-// var globais
+//var limitantes
 int visitouCastelo = 0;
 int visitouFloresta = 0;
 int olharfloresta = 0;
+int mecanismo =0;
+int porta = 0;
+// var globais
 int vidas = 3;
 int checkpoint = 0;
 int checsave;
-int checkpointsMarcados = 0;
 int escolha;
 
 //conquistas
-int paulada;
+int paulada=0;
+int checkpointsMarcados = 0;
+int good = 0;
+int neutrall = 0;
+int mort=0;
 
 //itens
 int carnepulsante=0;
@@ -25,6 +31,8 @@ int checkpointCano = 0;
 int checkpointcastelofuga = 0;
 int checkpointporao = 0;
 int checkpointmansao = 0;
+int checkpointwes = 0;
+int checkpointend = 0;
 
 // declaração de funções
 int ritual();
@@ -41,11 +49,15 @@ int prisao();
 int mansao();
 int deposito();
 int depositofuga();
+int wes();
+int conquistas();
 void resetGame();
-void conquistas();
+int goodEnding();
+int neutralEnding();
+int badend();
 
 // função de conquistas
-void conquistas() {
+int conquistas() {
     printf("número de checkpoints marcados: %d\n", checkpointsMarcados);
     sleep(2);
     if (checkpointsMarcados == 0){
@@ -58,10 +70,19 @@ void conquistas() {
         printf("parabéns, você quebrou um cano no seu amigo, ou melhor...não amigo. troféu:'amigos amigos, negócios aparte'\n");
     }
     if(carnepulsante==1){
-        printf("parabéns, você obteve um emaranhado de carne viva: a carne pulsante, que nojo ! troféu: 'açougueiro'");
+        printf("parabéns, você obteve um emaranhado de carne viva: a carne pulsante, que nojo ! troféu: 'açougueiro'\n");
     }
+    if(good==1){
+        printf("parabéns, voce deteve Wartrox e seu assistente Marxion! troféu: 'abyss whatcher'\n");
+    }
+    if(neutrall==1){
+        printf("parabéns, você alcançou o final neutro! troféu: 'um rapaz trabalhador'\n");
+    }
+    if(mort==1){
+        printf("voce alcançou o trofeu: 'agonizando pela eternidade'\n");
+    }
+    return 0;
 }
-
 // reset de variáveis
 void resetGame() {
     vidas = 3;
@@ -77,19 +98,605 @@ void resetGame() {
     checkpointporao = 0;
     carnepulsante=0;
     checkpointmansao=0;
+    checkpointwes = 0;
 }
 
-int depositofuga(){
-    printf("tem um homem velho, tão magro que você poderia ver seus ossos mesmo debaixo dos trapos que ele vestia.\n");
+int badend(){
+    printf("Pergunta: Quem vai usar a faca e derramar seu sangue no círculo?\n");
+    printf("1 - Wes\n");
+    printf("2 - Você\n");
+    printf("Escolha: ");
+    scanf("%d", &escolha);
+if (escolha == 1) {
+    printf("Walter: Wes, por favor, corte sua mão com essa faca, precisamos tentar ativar esse portal...\n");
     sleep(3);
-    printf("Pergunta: O que você faz?\n");
+    printf("Wes: tudo bem\n");
     sleep(2);
-    printf("1 - Tenta sair pela porta\n");
-    printf("2 - Tenta falar com o homem\n");
+    printf("Wes corta a própria mão em cima do círculo, deixando sangue derramar nele, mas após alguns segundos nada acontece\n");
+    sleep(3);
+    printf("Wes: Eu não quero fazer isso de novo…\n");
+    sleep(2);
+    printf("Sem escolha você é o próximo a fazer isso.\n");
+    sleep(3);
+}
+
+if (escolha == 2 || escolha == 1) {
+    printf("Você corta sua mão, derramando sangue no círculo...\n");
+    sleep(3);
+    printf("Quase instantaneamente o círculo começa a brilhar e um portal aparece, dando para ver o mesmo hospício onde tudo começou.\n");
+    sleep(3);
+    printf("Você puxa a mão de Wes e passa pelo portal. Ao passarem, o portal fecha instantaneamente.\n");
+    sleep(3);
+    printf("Antes que pudesse virar para ver Wes, você é golpeado...\n");
+    sleep(3);
+    printf("Você acorda em alguma sala estranha. Uma dor indescritível atinge você, mas você não consegue gritar...\n");
+    sleep(3);
+    printf("Seu corpo está destruído, barras de ferro atravessam seu corpo...\n");
+    sleep(3);
+    printf("À sua frente está Wes.\n");
+    sleep(2);
+    printf("Wes: Olá meu querido Walter, como está se sentindo...\n");
+    sleep(3);
+    printf("Não-Wes: sei que está doendo, era para doer, afinal esse é o destino de alguém tão inferior como você...\n");
+    sleep(3);
+    printf("final ruim! tente alcançar os outros finais !\n");
+    mort++;
+}
     return 0;
 }
 
-int deposito(){
+int goodEnding(){//fase final bom
+    return 0;
+    printf("Aquele pedaço de carne que você pegou, escorrega do seu bolso, Marxion é o primeiro a notar…\n");
+    sleep(4);
+    printf("Marxion: como foi que você conseguiu isso em seu merdinha?\n");
+    sleep(3);
+    printf("Marxion segurava a carne em suas mãos, e por algum motivo, Wes cospe na direção de Marxion, afetando a carne pulsante, mudando sua aparência,\n");
+    sleep(4);
+    printf("Marxion não estava prestando atenção e reabsorve a carne de volta para seu corpo. Após alguns segundos, Marxion começa a ter alterações extremas em seu corpo,\n");
+    sleep(4);
+    printf("sua habilidade de trocar de corpo várias vezes estava entrando em um colapso, seu corpo se expandia e contraia em rápida sucessão até partes de seus membros começarem a explodir,\n");
+    sleep(4);
+    printf("Marxion tenta atacar Wes de último momento porém seu braço cai e danifica o painel com os cabos, desativando eles e libertando você e Wes.\n");
+    sleep(4);
+    printf("Wartrox: COMO QUE VOCÊ…..\n");
+    sleep(3);
+    printf("Wartrox gritava contra vocês dois e avançava em sua direção primeiro, Wes empurra Wartrox contra uma parede e Wartrox escorrega nos pedaços do corpo de Marxion,\n");
+    sleep(4);
+    printf("vocês aproveitam a chance para tentar escapar. Enquanto isso, uma luz de dentro do você começa a reagir à presença de Wes, saindo do seu corpo e sendo absorvida por Wes,\n");
+    sleep(4);
+    printf("você não entendeu o que aconteceu, e nem Wes, ambos vocês estavam correndo pela escada para sair daquele lugar.\n");
+    sleep(4);
+    printf("Ao sair da prisão e chegando no térreo do castelo, você começa a sentir o castelo mudando de forma, quebrando e amassando contra o seu próprio centro,\n");
+    sleep(4);;
+    printf("vocês dão um último pulo para fora do castelo, Wes cai em seus braços e você sente uma energia forte emanando dele, enquanto você encarava ele, vocês trocam olhares longos e depois desviam o olhar.\n");
+    sleep(4);
+    printf("Walter: Wes… desde quando você tem tanta força?\n");
+    sleep(3);
+    printf("Wes: e-e-eu… não sei… eu realmente me sinto diferente, mas não sei explicar bem como.\n");
+    sleep(3);
+    printf("O céu começava a cair, o mundo em que vocês se encontravam estava entrando em colapso, a grama estava mudando de cor, o céu se despedaçando e as construções mudando de forma,\n");
+    sleep(4);
+    printf("parece que Wes estava balanceando o mundo com sua energia, com sua luz… Enquanto você pensava, um abismo surge na frente da floresta,\n");
+    sleep(4);
+    printf("e não era o único, várias rachaduras com formatos variados abriam pelo mundo, no chão, no céu, por todo lugar.\n");
+    sleep(4);
+    printf("Pergunta: para onde eu vou agora?\n");
+    sleep(2);
+    printf("1- Ir para a floresta.\n");
+    printf("2- Ir para a cidade.\n");
+    printf("3- Voltar para o castelo.\n");
+    printf("4- Ficar parado olhando para o céu.\n");
+    printf("escolha:");
+    scanf("%d",&escolha);
+    if(escolha==1 || escolha== 2 || escolha== 4){
+        printf("2,3,4 - Não havia nada lá, Nada? Não era um nome de uma criatura que \nassombrava as terras desoladas e esquecidas?\n");
+        sleep(4);
+        printf("Uma lenda urbana que você escutava desde criança, em poucos segundos, \nvocê vira para trás e vê o corpo de Wes desmembrado pelo chão\n");
+        sleep(4);
+        printf("e uma criatura com uma cabeça de um esqueleto de um animal e o resto do \nseu corpo era uma fumaça com aspectos de sombra,\n");
+        sleep(4);
+        printf("com braços e pernas por toda a sua extensão.\n");
+        sleep(3);
+        printf("Parece que essa criatura invadiu esse mundo, ela não poupa ninguém, \nnão tem razão e nem sentimento, apenas anda por aí.\n");
+        sleep(4);
+        printf("Você se encontra com o mesmo destino de Wes e tem seu corpo desmembrado.\n");
+        sleep(3);
+        return morte();
+    }
+    else{
+        printf("1- A floresta tinha um abismo notável na entrada da floresta,\n");
+        sleep(3);
+        printf("algo que parecia interagir com a essência de Wes, então vocês decidem ir para lá.\n");
+        sleep(4);
+        printf("No caminho, uma onça feita de luz aparece do lado de vocês.\n");
+        sleep(3);
+        printf("???: então foi você que derrotou aquele canalha transmorfo… meus agradecimentos.\n");
+        sleep(2);
+        printf("Wes: e quem é você?\n");
+        sleep(2);
+        printf("Walter: não temos tempo para isso! Senhora onça, o que é aquele abismo?\n");
+        sleep(2);
+        printf("???: pode me chamar de Lux. Aquilo é o que deve levar vocês de volta para o mundo de onde vieram, talvez…\n");
+        sleep(2);
+        printf("Eu tentei interagir mas parece necessitar de algo mais forte para abrir a fronteira.\n");
+        sleep(2);
+        printf("Walter: certo, Wes vamos, é nossa chance de sair daqui!\n");
+        sleep(2);
+        printf("Wes: …… ainda não acabou… Lux não é? O que você vai fazer com Wartrox?\n");
+        sleep(2);
+        printf("Lux: bom… vou dar um jeito. Vocês podem fugir.\n");
+        sleep(2);
+        printf("Wes: … eu não aceito isso?\n");
+        sleep(2);
+        printf("Walter: WES QUAL FOI CARA? NOSSA MELHOR CHANCE É AGORA.\n");
+        sleep(2);
+        printf("Wes: Lux… você consegue se juntar a mim não é?\n");
+        sleep(2);
+        printf("Lux: hmm… parece que você finalmente entendeu… Vamos então.\n");
+        sleep(2);
+        printf("Você se vê sem entender nada, Wes estava tremendo, ainda fragilizado de tudo que aconteceu.\n");
+        sleep(2);
+        printf("Mas por que ele estava tão confiante?\n");
+        sleep(2);
+        printf("Wes estica os dois braços e Lux se desintegra em partículas luminosas que são absorvidas por Wes.\n");
+        sleep(2);
+        printf("À distância, você via Wartrox se aproximando rapidamente, com uma arma que distorcia o espaço ao seu redor.\n");
+        sleep(2);
+        printf("Aquilo lhe dava calafrios, vocês estavam na beira do abismo.\n");
+        sleep(2);
+        printf("Tão perto de fugir e Wes inventa de ser o herói justo agora.\n");
+        sleep(2);
+        printf("Wartrox joga a sua arma contra Wes.\n");
+        sleep(2);
+        printf("Wes lança uma barreira que soava gritos agonizantes, impedindo a espada de avançar contra vocês.\n");
+        sleep(2);
+        printf("Mas ela estava alcançando, os gritos estavam ficando mais altos.\n");
+        sleep(2);
+        printf("Você só tapava o ouvido enquanto observava a cena.\n");
+        sleep(2);
+        printf("Um feixe de luz estava piscando constantemente nessa espécie de barreira protetora que Wes segurava.\n");
+        sleep(2);
+        printf("A espada estava suspensa no ar e logo foi arremessada para o chão, atravessando tudo sem nenhuma dificuldade.\n");
+        sleep(2);
+        printf("Wartrox: AAAAAHHH DESGRAÇADO! PENSA QUE SEUS PODERES PODEM ME IMPEDIR? PEREÇA PERANTE MINHA PRESENÇA!\n");
+        sleep(2);
+        printf("Wartrox estendia seus braços e saía uma gosma sombria que cobria todo lugar que passava.\n");
+        sleep(2);
+        printf("Wes já estava ficando cansado, parece que aquela barreira era tudo que podia manifestar com a ajuda de Lux.\n");
+        sleep(2);
+        printf("Wes despenca de costas no abismo, quebrando uma barreira invisível da mesma.\n");
+        sleep(2);
+        printf("Walter: NÃOOOO, WEEEES!\n");
+        sleep(2);
+        printf("Wartrox: É O SEU FIM WALTER!\n");
+        sleep(2);
+        printf("Wartrox consegue lhe acertar um golpe feroz com suas unhas alongadas.\n");
+        sleep(2);
+        printf("Você despenca do abismo com um corte profundo em seu peito…\n");
+        sleep(2);
+        printf("Wartrox: boa viagem SEU LIXO, espero que você não acorde mais com esse ataq—-- o quê?\n");
+        sleep(2);
+        printf("Isso é meu sangue? O que é isso atravessando o meu peito?\n");
+        sleep(2);
+        printf("Uma criatura estava observando, Nada, uma criatura que não poupa nada pelo seu caminho.\n");
+        sleep(2);
+        printf("E agora que restava só Wartrox nesse mundo, estava claro qual era o seu próximo alvo.\n");
+        sleep(2);
+        printf("Wartrox tentou se virar mas Nada o empurrou para o abismo e pulou logo em seguida.\n");
+        sleep(2);
+        printf("Depois disso, sua visão embaçou… Talvez seu tempo tenha chegado ao fim.\n");
+        sleep(2);
+        printf("Pelo menos deu para salvar Wes.\n");
+        sleep(2);
+        printf("Você começa a ver todas as lembranças que você teve com ele.\n");
+        sleep(2);
+        printf("Pensa como nunca pôde se expressar de verdade com ele.\n");
+        sleep(2);
+        printf("Agora seus sentimentos serão carregados para junto de seu túmulo.\n");
+        sleep(2);
+        printf("???: Wal…ter…..Walter!.... WALTER ACORDA!\n");
+        sleep(2);
+        printf("Você abre os olhos, com lágrimas caindo sobre sua face, não eram suas, eram de outra pessoa.\n");
+        sleep(3);
+        printf("Você já havia aceitado a morte, então o que você ainda fazia vivo?\n");
+        sleep(2);
+        printf("O céu estava claro, porém nublado.\n");
+        sleep(2);
+        printf("Wes: Walter! Você acordou! O que aconteceu? Nós voltamos?\n");
+        sleep(2);
+        printf("Walter: pera aí cara, sai de cima de mim.\n");
+        sleep(2);
+        printf("Você empurra Wes para o lado e observa o seu arredor, parece que vocês tinham voltado àquele hospício abandonado.\n");
+        sleep(3);
+        printf("Também estava ao seu lado a roupa que Wartrox utilizava, uma espécie de manto manchado de sangue roxo.\n");
+        sleep(3);
+        printf("Parece ser a única coisa que sobrou daquele mundo inóspito.\n");
+        sleep(2);
+        printf("Walter: por que mesmo nós entramos aqui em?\n");
+        sleep(2);
+        printf("Wes: para conseguir dados para aquela matéria, lembra? Dos residentes próximos vendo visagens e etc.\n");
+        sleep(3);
+        printf("Walter: bom, ninguém vai acreditar em nós mesmos, só sobrou esse manto e algumas imagens na câmera com fotos de rituais nesse hospício.\n");
+        sleep(3);
+        printf("Wes: e essa marca no seu peito… será que ela ajuda?\n");
+        sleep(2);
+        printf("Walter: que marca?\n");
+        sleep(2);
+        printf("Você olha para o seu peito, aquilo realmente tinha ficado marcado, não estava sangrando nem doendo,\n");
+        sleep(3);
+        printf("era como se você tivesse tido uma tatuagem indolor e instantânea.\n");
+        sleep(2);
+        printf("Walter: bom… vão achar que eu só fiz isso pra criar história, sabe como aquele pessoal do estúdio é.\n");
+        sleep(3);
+        printf("Wes: realmente… vamos sair logo daqui? Eu já tô tremendo todo aqui, só não borrei as calças porque não comi nada.\n");
+        sleep(3);
+        printf("Walter: Hahaha, eu digo o mesmo, vamos levar este manto, pode render em algo.\n");
+        sleep(3);
+        printf("Wes: ei… Walter…\n");
+        sleep(2);
+        printf("Walter: diga.\n");
+        sleep(2);
+        printf("Wes: eu não consigo sair do lugar, minhas pernas estão falhando, pode me ajudar?\n");
+        sleep(2);
+        printf("Walter: mas você é folgado em cara, tá bom, sobe nas minhas costas vai.\n");
+        sleep(3);
+        printf("Wes: valeu! Só tu mesmo pra me ajudar assim.\n");
+        sleep(2);
+        printf("Walter: Sim sim, agora bora logo que já vai chover aqui.\n");
+        sleep(2);
+        printf("Wes subiu em suas costas e apertou bem forte, você ia reclamar mas decidiu ficar calado.\n");
+        sleep(3);
+        printf("Tanta coisa aconteceu, você só está feliz que você e Wes saíram daquilo vivos.\n");
+        sleep(3);
+        printf("Vai ser bem difícil dormir tranquilo depois de tudo o que aconteceu.\n");
+        sleep(2);
+        printf("Ao sair do hospício, você dá uma última olhada para trás, e depois segue em frente para voltar ao carro de onde vieram.\n");
+        sleep(3);
+        printf("Impressionante não ter sido assaltado ainda.\n");
+        sleep(2);
+        printf("Você põe Wes no banco de trás e se posiciona para dirigir o carro.\n");
+        sleep(2);
+        printf("Foi um longo dia, afinal que dia já era hoje? Sábado… Certo, dá para dormir em paz.\n");
+        sleep(3);
+        printf("Afinal o que era tudo aquilo? Você só sente uma voz ecoando na sua cabeça com as palavras “Luz” e “Abismo”.\n");
+        sleep(3);
+        printf("Você decide que a próxima matéria vai se chamar “Abismo da Luz”, vai ser um grande sucesso.\n");
+        sleep(3);
+        printf("Fim de Jogo. final bom, muito obrigado por ter jogado abismo da luz !!!\n");
+        sleep(2);
+        good++;
+        conquistas();
+        return 0;
+    }
+    
+}
+
+int neutralEnding(){//fase final neutro
+    printf("gostaria de marcar o checkpoint? [1] Sim / [0] Não: ");
+    scanf("%d", &checsave);
+    while(checsave != 0 && checsave != 1) {
+        printf("Opção inválida. Digite 1 para SIM ou 0 para NÃO.\n");
+        scanf("%d", &checsave);
+    }
+    if(checsave == 1 && checkpointend == 0){
+        checkpoint = 8;
+        checkpointend = 1;
+        checkpointsMarcados++;
+    }
+    
+    printf("Parece que uma criatura que estava a espreita começou a atacar Marxion.\n");
+    sleep(3);
+    printf("A criatura desferia golpes ferozes contra todas as direções, acertou você e Wes, mas você conseguiu se soltar.\n");
+    sleep(3);
+    printf("Wes ainda estava preso, você tenta soltá-lo, porém não tem força para isso.\n");
+    sleep(3);
+    printf("Aquela criatura era Nada, um ser composto de pura violência e ausência de razão.\n");
+    sleep(3);
+    printf("O que ele fazia ali era desconhecido, mas parecia que Wartrox havia antecipado isso e começa a mexer no painel em que Wes estava preso, até mesmo te ignorando.\n");
+    sleep(3);
+    printf("Pergunta: o que você vai fazer?\n");
+    printf("1- Usar um dos cabos que te prenderam, e acertar Wartrox.\n");
+    printf("2- Fugir do laboratório imediatamente.\n");
+    printf("3- Atacar Marxion com um pedaço de cano (de novo).\n");
+    sleep(2);
+    scanf("%d",&escolha);
+    if(escolha==1){
+        printf("1- Você usa o cabo que te prendia para tentar enforcar Wartrox.\n");
+        sleep(3);
+        printf("Wartrox simplesmente corta o cabo e corta a sua cabeça sem nem perceber. Fim de jogo.\n");
+        sleep(3);
+        return morte();
+    }
+     else if(escolha==2){
+         printf("2- Você decide que aquela era a melhor chance de você fugir.\n");
+         sleep(3);
+         printf("Talvez Wes tivesse a mesma sorte que você e Nada poderia cortar o cabo com um de seus golpes desgovernados.\n");
+         sleep(3);
+         printf("Você escapa do laboratório e chega até o térreo do castelo.\n");
+         sleep(3);
+          /* Continuação do cenário */
+    printf("Enquanto você fugia, você vê Wes se arrastando pela escada, parece que ele de fato conseguiu fugir, mas estava muito debilitado.\n");
+    sleep(3);
+    printf("Você o carrega pelo braço e vocês caminham até fora do castelo.\n");
+    sleep(3);
+    printf("Ao olhar para trás, você vê o castelo sendo reconfigurado para uma forma gigante: um monstro de 6 patas e 3 cabeças, pernas como de uma aranha e olhos como de uma mosca.\n");
+    sleep(3);
+    printf("Aquilo estava mirando em vocês.\n");
+    sleep(2);
+    printf("Vocês correm na melhor velocidade que podiam até a floresta para fazê-lo perder campo de visão, porém uma das patas rasga uma perna de ambos.\n");
+    sleep(3);
+    printf("Ao se aproximar da floresta, crateras começaram a surgir do céu, do chão e, na sua frente, um abismo que emanava um ar fresco, como se tivesse uma saída por lá.\n");
+    sleep(3);
+    printf("Você estava com medo, não sabia se aquilo iria te ajudar ou apenas te matar.\n");
+    sleep(2);
+    printf("Antes mesmo de pensar, você olha para trás e vê Wes sendo empalado por duas patas daquele ser grotesco.\n");
+    sleep(3);
+    printf("De longe, você olha para a cara de Wes em seus últimos momentos.\n");
+    sleep(3);
+    printf("Wes: obrigado por tudo Walter… eu te am—-\n");
+    sleep(2);
+    printf("Antes que Wes terminasse de falar, a criatura perfura o coração de Wes e uma explosão de luz cobre toda a área ao redor dele,\n eventualmente te empurrando contra o abismo.\n");
+    sleep(3);
+    printf("Sua perna até voou junto contigo.\n");
+    sleep(2);
+    printf("Você sente uma barreira te impedindo de cair completamente pelo abismo, porém uma segunda explosão de luz força seu corpo contra a barreira e a quebra.\n");
+    sleep(3);
+    printf("Enquanto tudo que você podia fazer era chorar.\n");
+    sleep(2);
+    printf("Walter: WEEEEEEEEEES!!! NÃO MORRA SEM MIM!\n");
+    sleep(3);
+    printf("A sua vista fica embaçada enquanto você via aquele mundo se destruir por completo.\n");
+    sleep(3);
+    printf("Seu amigo havia morrido, você fugiu, mas a que preço?\n");
+    sleep(2);
+    printf("Essa pergunta ecoava pelo silêncio que tomava a sua queda durante o abismo, e um sentimento de amargura e dor preenchia seu coração.\n");
+    sleep(3);
+    printf("Você acorda, está de tarde, chovendo, você acorda com a água batendo na sua cara.\n");
+    sleep(3);
+    printf("Seu corpo está completamente dormente, sua perna está conectada de alguma forma, mas Wes não está contigo.\n");
+    sleep(3);
+    printf("Tudo foi em vão, as gravações do hospício estavam perdidas pela chuva, suas lágrimas se misturavam com as gotas da chuva…\n");
+    sleep(3);
+    printf("Você se levanta, dá uma olhada na sala ao seu redor, cheio de marcas e símbolos de uma espécie de religião.\n");
+    sleep(3);
+    printf("As paredes começaram a cair por conta da intensa chuva que estava afetando o lugar.\n");
+    sleep(3);
+    printf("Você foi obrigado a sair de mãos vazias do hospício, e muito mais que mãos vazias, sem um amigo que você tanto gostava…\n");
+    sleep(3);
+    printf("Ao entrar no carro, todo molhado e triste, você olha para o seu celular e vê que dia era.\n");
+    sleep(3);
+    printf("Walter: Segunda? Hahahaha……… eu mereço mesmo.\n");
+    sleep(3);
+    printf("Você dirige voltando para casa para trocar de roupa e ir trabalhar.\n");
+    sleep(3);
+    printf("É bem capaz que vai levar um esporro do seu chefe por chegar tarde e não conseguir nenhum material de pesquisa.\n");
+    sleep(3);
+    printf("Havia algo no seu bolso quando você esticou para pegar o que tinha lá, estava escrito um bilhete: “Não se esqueça, da Luz que ilumina o Abismo no seu coração”.\n");
+    sleep(3);
+    printf("Lágrimas caíram, você dirige com um peso que nunca poderá contar para ninguém, e é obrigado a tratar como se tudo aquilo não tivesse acontecido.\n");
+    sleep(3);
+    printf("Fim de Jogo. Final Mediano.\nTente conseguir os outros dois finais!");
+    neutrall++;
+    conquistas();
+        }
+        else{
+            printf("3- Você pondera sobre a possibilidade de algo que funcionou antes funcionar de novo.\n");
+            sleep(3);
+            printf("Sem hesitar muito, você pega um pedaço de cano próximo e acerta as costas de Marxion enquanto ele se defendia de Nada.\n");
+            sleep(3);
+            printf("Marxion solta um berro em sua direção e você fica surdo na hora, porém Marxion cai no chão e começa a levar uma sequência feroz de golpes no chão.\n");
+            sleep(3);
+            printf("Enquanto isso, Wartrox estava muito focado em seu painel e assim que termina, olha para Wes, perfura seu coração e obtém um coração luminoso.\n");
+            sleep(3);
+            printf("Ele usa para explodir a criatura Nada, você é pego na explosão colateral. Fim de jogo.\n");
+            sleep(3);
+            return morte();
+        }
+    return 0;
+}
+
+int wes(){//fase 3.1.5 caminho para finalbom/regular
+    printf("gostaria de marcar o checkpoint? [1] Sim / [0] Não: ");
+    scanf("%d", &checsave);
+    while(checsave != 0 && checsave != 1) {
+        printf("Opção inválida. Digite 1 para SIM ou 0 para NÃO.\n");
+        scanf("%d", &checsave);
+    }
+    if(checsave == 1 && checkpointwes == 0){
+        checkpoint = 7;
+        checkpointwes = 1;
+        checkpointsMarcados++;
+    return 0;
+    }
+    printf("Ao acordar, você está no laboratório preso que nem Wes, Wes agora estava acordado,\n mas você está começando a entender o porquê dele estar tão fraco,\n");
+    sleep(4);
+    printf("aqueles tubos estavam tirando toda a que lhe restava, você sente que não consegue nem sequer mexer os braços direito.\n");
+    sleep(4);
+    printf("Marxion: e aí espertão? Não é tão legal quando você tem um pedaço de si arrancado não é? Ei Wartrox— \nquer dizer, chefe! Eles tão bem presos e agora?\n");
+    sleep(4);
+    printf("Você não entende o que ele quis dizer com um pedaço de si arrancado,\n até você olhar para o seu peito, um pedaço retangular foi arrancado,\n");
+    sleep(4);
+    printf("você começa a sentir o ardor, é como se tivessem queimando uma placa de metal sob o seu peito, \nparece que tiraram só o suficiente para te manter vivo e para te torturar.\n");
+    sleep(4);
+    printf("Você olha pro lado e vê Wes preso, pelo menos ele não tinha sido marcado também.\n");
+    sleep(4);
+    printf("Wartrox: bom, eu não tô nem com vontade de explicar nada para esse palhaço aí, mas eu irei só dizer uma coisa, \nseu amigo Wes, é um grande receptáculo para nosso plano,\n");
+    sleep(4);
+    printf("você tentar interrompê-lo foi o seu maior erro…\n");
+    sleep(4);
+    printf("Você tenta se debater com os cabos, mas eles não mexem, porém isso resultou em uma coisa…\n");
+    sleep(4);
+    if (carnepulsante == 1){
+        return goodEnding();
+    }
+    return neutralEnding();
+}
+
+int depositofuga(){//fase 3.2.3caminho para final ruim
+    printf("tem um homem velho, tão magro que você poderia ver seus ossos mesmo debaixo dos trapos que ele vestia.\n");
+    sleep(3);
+    do {
+        printf("Pergunta: O que você faz?\n");
+
+        if (porta == 0) {
+            printf("1 - Tentar sair pela porta\n");
+            printf("2 - Tentar falar com o homem\n");
+        } else if (porta == 1) {
+            printf("E agora? O que vai fazer?\n");
+            printf("1 - Tentar arrombar a porta\n");
+            printf("2 - Se virar para o homem preso e tentar falar com ele\n");
+        }
+        printf("Escolha: ");
+        scanf("%d", &escolha);
+        if (escolha == 1 && porta==0){
+            printf("Ao tentar abrir a porta, você percebe que ela está trancada.\n");
+            porta++;
+        }
+        else if(escolha==1 && porta==1){
+            printf("Você tenta arrombar a porta, mas falha miseravelmente.\n");
+            sleep(2);
+            printf("Ela parece tão robusta que nem mesmo com alguma ferramenta você conseguiria abri-la.\n");
+            sleep(2);
+            printf("O esforço apenas te deixa exausto e mais consciente de que fugir exigirá outra estratégia.\n");
+            sleep(2);
+            printf("Você respira fundo e observa novamente o ambiente, procurando alguma alternativa.\n");
+            sleep(2);
+            printf("Enquanto isso, o prisioneiro idoso continua a te observar com olhos fundos e enigmáticos.\n");
+            sleep(2);
+        }
+    } while (escolha == 2);
+            printf("Você decide falar com o homem.\n");
+            printf("Walter: senhor? O senhor está bem?\n");
+            sleep(3);
+            printf("Aquele prisioneiro idoso que antes estava olhando fixamente para o chão, levanta a sua cabeça,\n");
+            sleep(3);
+            printf("revelando olhos quase tão fundos quanto os de um cadáver.\n");
+            sleep(3);
+            printf("Prisioneiro: Você.. por acaso você é o anjo da morte que veio cumprir minha maldição?\n");
+            sleep(3);
+            printf("\"Anjo da morte\"? \"maldição\"?\n");
+            sleep(2);
+            printf("Walter: Não senhor, meu nome é Walter, sou um… hóspede aqui, ou pelo menos achava que era…\n");
+            sleep(3);
+            printf("Prisioneiro: HAHAHAHA - ri o prisioneiro entre tosses violentas.\n");
+            sleep(3);
+            printf("Prisioneiro: Você é uma vítima dele não é?\n");
+            sleep(3);
+            printf("Walter: Vítima de quem?\n");
+            sleep(2);
+            printf("Prisioneiro: Do senhor desta mansão, um imponente lorde deste mundo, a pessoa que me amaldiçoou\n");
+            sleep(3);
+            printf("com uma doença incurável que poderá me matar a qualquer momento e que provavelmente\n");
+            sleep(3);
+            printf("tentará matar você e qualquer outra pessoa que deu azar de vir para este mundo que nem você.\n");
+            sleep(3);
+            printf("Você reflete por alguns segundos, você sabe que não tem muito tempo para agir.\n");
+            sleep(2);
+            printf("Walter: Se estamos em um lugar tão ruim temos que fugir, como podemos sair daqui desta mansão,\n");
+            sleep(3);
+            printf("ou até mesmo desse mundo?\n");
+            sleep(2);
+            printf("Prisioneiro: Meu jovem rapaz, eu não conseguiria sair nem se fosse novo como você,\n");
+            sleep(3);
+            printf("essa maldição maldita me enfraquece ao ponto das minhas pernas não funcionarem mais\n");
+            sleep(3);
+            printf("e me prende a este lugar, a este mundo. Se eu ao menos pisar para fora desta sala, eu morrerei na hora.\n");
+            sleep(3);
+            printf("Não consigo nem mesmo tirar minha própria vida, mas você pode fazer isso, pode fugir por mim..\n");
+            sleep(3);
+            printf("Walter: Eu lamento muito pelo senhor..\n");
+            sleep(2);
+            printf("Prisioneiro: Lamentar por outra pessoa aqui, é para quem pode seu tolo, e nós não podemos!\n");
+            sleep(3);
+            printf("Walter: Me diga, como posso fugir daqui desta mansão?\n");
+            sleep(2);
+            printf("Prisioneiro: Tem uma maneira de não só fugir desse lugar, mas desse mundo também e voltar para casa.\n");
+            sleep(3);
+            printf("Walter: Como?\n");
+            sleep(2);
+            printf("Prisioneiro: Existe um portal no subterrâneo desta mansão, entre esse mundo e o nosso mundo,\n");
+            sleep(3);
+            printf("é só atravessá-lo e fechar ele do outro lado que você vai conseguir escapar.\n");
+            sleep(3);
+            printf("Walter: Isso é verdade? E como podemos chegar até ele?\n");
+            sleep(2);
+            printf("Prisioneiro: Sim criança… “podemos”? hahaha, então tem outra vítima com você?\n");
+            sleep(3);
+            printf("Walter: Sim senhor, um amigo…\n");
+            sleep(2);
+            printf("Prisioneiro: Não se preocupe, vocês conseguirão escapar, naquele lugar não tem guardas,\n");
+            sleep(3);
+            printf("pois o mestre desse lugar não dá para ninguém permissão para chegar perto do portal.\n");
+            sleep(3);
+            printf("Agora vou contar para você como chegar lá.\n");
+            sleep(2);
+            printf("Aquele prisioneiro conta detalhadamente como chegar no tal portal e lhe entrega uma chave\n");
+            sleep(3);
+            printf("que abre a porta para sair da prisão. Após se despedirem, você parte para encontrar Wes.\n");
+            sleep(3);
+            printf("Você sai daquele lugar, e como se nada tivesse acontecido, e então começa a andar pela mansão procurando Wes.\n");
+            sleep(3);
+            printf("Você acha ele andando por um dos corredores, parecendo procurar alguém.\n");
+            sleep(2);
+            printf("Wes: Walter, onde você estava? Te procurei por toda a parte!\n");
+            sleep(3);
+            printf("Walter: Não dá tempo de explicar, venha comigo, esse lugar, não é seguro!\n");
+            sleep(3);
+            printf("Wes: O que quer dizer?\n");
+            sleep(2);
+            printf("Walter: Não temos tempo agora, só me segue e tente não ser visto!\n");
+            sleep(3);
+            printf("Wes concorda com a cabeça, e então vocês seguem para o lugar que aquele senhor tinha dito a você.\n");
+            sleep(3);
+            printf("Ao chegar lá vocês se deparam com uma sala parecida com o interior de um templo egípcio,\n");
+            sleep(3);
+            printf("com um arco circular no centro, a mesma estrutura detalhada por aquele senhor,\n");
+            sleep(3);
+            printf("que invocará o portal, mas o portal não está lá onde ele disse que estaria.\n");
+            sleep(3);
+            printf("Vocês vão para o arco, mas você não sabe como invocar de alguma forma ele.\n");
+            sleep(3);
+            printf("O que você faz agora?\n");
+            sleep(2);
+            printf("Pergunta: E agora?\n");
+            sleep(2);
+            printf("1 - Sair daquele lugar e encontrar outra forma de fugir\n");
+            sleep(1);
+            printf("2 - Procurar pistas de como ativar ele\n");
+            sleep(1);
+            printf("Escolha: ");
+            scanf("%d", &escolha);
+
+if (escolha == 1) {
+    printf("Você fala pro Wes que não sabe como abrir o portal, e que pensava que ele estaria aberto.\n");
+    sleep(3);
+    printf("Você diz que é melhor vocês procurarem outro meio de sair desse mundo antes que seja tarde.\n");
+    sleep(3);
+    printf("Wes concorda sem dizer uma palavra.\n");
+    sleep(2);
+    printf("Ao voltar pelo caminho que vieram, quase no final dele, você se depara com várias pessoas à sua frente,\n");
+    sleep(3);
+    printf("armadas com vários tipos de armas brancas. Da morte não havia uma escapatória sequer naquele momento.\n");
+    sleep(3);
+    printf("Fim de Jogo!\n");
+    morte(); // chama a função que finaliza o jogo
+    } 
+    else{
+        printf("Ao olhar mais atentamente esse lugar, vocês encontram imagens na parede.\n");
+        sleep(3);
+        printf("Havia pessoas se cortando nas imagens, bem acima daquele círculo.\n");
+        sleep(3);
+        printf("Além disso, havia uma faca de aparência ritualística em cima de um bloco de pedra.\n");
+        sleep(3);
+        printf("Você interpreta que para abrir o portal, é preciso sangue ser derramado no círculo, assim como nas imagens.\n");
+        sleep(3);
+        return badend();
+}
+    return 0;
+}
+
+int deposito(){//fase 3.2.2 caminho para final ruim
     printf("Após essa conversa os 2 desconhecidos acabam saindo do depósito,\n");
     sleep(3);
     printf("trancando a porta ao saírem, você sabe que tem algo de errado nesta mansão,\n");
@@ -468,6 +1075,89 @@ int prisao(){//fase 3.1.5 caminho para final bom/final regular
         sleep(4);
         printf("ao entrar, você se depara com uma vista assustadora.\n");
         sleep(4);
+        printf("Ao se aproximar você vê Wes, pendurado em suspensão no ar,\n");
+        sleep(3);
+        printf("com tubos conectados em seu pescoço na parte de trás da cabeça,\n");
+        sleep(3);
+        printf("e um tubo ligado diretamente ao seu umbigo.\n");
+        sleep(3);
+        printf("Impossível tentar entender para quê toda aquela estrutura estava ligada ao seu amigo,\n");
+        sleep(3);
+        printf("você só sabia que tinha que tirá-lo de lá imediatamente.\n");
+        sleep(3);
+        printf("Você rapidamente analisa os seus arredores à procura de algo para liberá-lo.\n");
+        sleep(3);
+        printf("Pergunta: o que você vai fazer?\n");
+        sleep(2);
+        printf("1- Arrancar os cabos à força.\n");
+        if(mecanismo==0){
+            printf("2- Procurar um mecanismo que libere automaticamente.\n");
+        }
+        printf("3- Sair apertando todos os botões.\n");//opcao historia
+        printf("escolha: ");
+        scanf("%d",&escolha);
+        if(escolha ==1){
+            printf("1- Você arranca todos os cabos puxando-os com toda a sua força.\n");
+            sleep(3);
+            printf("Wes começa a se debater fortemente no chão, como se estivesse possuído, porém dormindo.\n");
+            sleep(3);
+            printf("Você observa sem saber o que fazer enquanto Wes vomita uma luz de dentro da sua boca.\n");
+            sleep(3);
+            printf("A luz com o tempo vai cobrindo o chão e antes que você pudesse fugir, a luz começa a desintegrar seus pés.\n");
+            sleep(3);
+            printf("Você cai de cara no chão direto com a luz, seu corpo inteiro foi reduzido à partículas luminosas.\n");
+            sleep(3);
+            return morte();
+        }
+        else if(escolha==2 && mecanismo==0){
+            printf("2- Você procura algo que possa facilitar a retirada dos cabos.\n");
+            sleep(3);
+            printf("Alguma coisa que esteja prendendo ele lá, uma engrenagem para girar, \num parafuso para desmontar, mas você não encontra nada.\n");
+            sleep(3);
+            mecanismo++;
+        }
+        else{
+            printf("3- Você desesperadamente aperta vários botões em um painel em frente ao seu amigo suspendido ao ar.\n");
+            sleep(3);
+            printf("Eventualmente os tubos foram saindo de Wes, devagar e cuidadosamente.\n");
+            sleep(3);
+            printf("Você corre para segurá-lo antes que ele caia no chão.\n");
+            sleep(3);
+            printf("Você consegue segurá-lo porém cai de costas no chão.\n");
+            sleep(3);
+            printf("Wes começa a acordar.\n");
+            sleep(3);
+            printf("Wes abre a boca e uma voz fraca saía de sua boca:\n");
+            sleep(3);
+            printf("Wes: w….al…..ter….? É….. voc….ê?\n");
+            sleep(3);
+            printf("Walter: Wes! Wes! Você tá bem?\n");
+            sleep(3);
+            printf("Wes: *tosse *tosse, nem um pouco… o que estamos fazendo aqui?\n");
+            sleep(3);
+            printf("Walter: não temos tempo para explicações agora Wes, consegue se levantar?\n");
+            sleep(3);
+            printf("Wes: acho que sim…\n");
+            sleep(3);
+            printf("Wes tenta se levantar mas tropeça logo no primeiro passo, você o segura e põe ele nas suas costas.\n");
+            sleep(3);
+            printf("Walter: vamos sair daqui logo!\n");
+            sleep(3);
+            printf("Finalmente vocês tinham se reencontrado, mas não havia nem tempo para poder regozijar, o medo daquela dupla voltar e estragar tudo era muito maior.\n");
+            sleep(3);
+            printf("Wes segurava nas suas costas com todas as forças que tinha, parece que ele estava com saudades, mas você ignora e só corre com tudo para fora do porão.\n");
+            sleep(3);
+            printf("Sua melhor opção era tentar se recuperar na floresta, mas quando você passava pela porta do castelo…\n");
+            sleep(3);
+            printf("Marxion: ora ora, quem eu encontro depois de tanto tempo… Meu caro amigo Walter, e quem é este cadáver nas suas costas?\n");
+            sleep(3);
+            printf("Antes que você pudesse abrir a boca, Marxion desfere um golpe avassalador na sua barriga, lhe apagando em questão de segundos.\n");
+            sleep(3);
+            printf("Você cai sobre o chão, vendo a porta do castelo fechando, enquanto uma figura observa…\n");
+            sleep(3);
+            return wes();
+        }
+
     }
     else{
         printf("Você pega uma barra de metal que estava jogada pelo chão e segue de fininho até atacar o chefe pelas costas,\n");
@@ -635,6 +1325,7 @@ int castelointerior(){//fase 3.1.3 caminho para final bom/ final regular
         sleep(4);
         printf("Um perigo eminente está para recair sobre você.\n");
         sleep(4);
+        return wes();
     }
     else{
         printf("É melhor seguir em frente, a oferta é tentadora,\n");
@@ -1374,8 +2065,14 @@ int morte() {//função de morte e checkpoints
             else if(checkpoint == 5){
                 return porao();
             }
-            else if(checkpoint ==6){
+            else if(checkpoint == 6){
                 return mansao();
+            }
+            else if(checkpoint == 7){
+                return wes();
+            }
+            else if(checkpoint == 8){
+                return neutralEnding();
             }
         }
     } 
@@ -1396,7 +2093,7 @@ int morte() {//função de morte e checkpoints
             return Escapar();
         } else {
             printf("Obrigado por jogar!\n");
-            conquistas();
+            return conquistas();
         }
     }
     return 0;
