@@ -20,6 +20,7 @@ int checkpointsMarcados = 0;
 int good = 0;
 int neutrall = 0;
 int mort=0;
+int atalho=0;
 
 //itens
 int carnepulsante=0;
@@ -33,28 +34,30 @@ int checkpointporao = 0;
 int checkpointmansao = 0;
 int checkpointwes = 0;
 int checkpointend = 0;
+int checkpointbadend =0;//9
 
 // declaração de funções
-int ritual();
-int morte();
+void ritual();
+void morte();
 int main();
-int cidade();
-int cano();
-int dormir();
-int floresta();
-int florestaFuga();
-int castelofuga();
-int porao();
-int prisao();
-int mansao();
-int deposito();
-int depositofuga();
-int wes();
+void cidade();
+void cano();
+void dormir();
+void floresta();
+void florestaFuga();
+void castelofuga();
+void porao();
+void prisao();
+void mansao();
+void deposito();
+void depositofuga();
+void wes();
 int conquistas();
 void resetGame();
-int goodEnding();
-int neutralEnding();
-int badend();
+void goodEnding();
+void neutralEnding();
+void badend();
+void onca();
 
 // função de conquistas
 int conquistas() {
@@ -73,13 +76,19 @@ int conquistas() {
         printf("parabéns, você obteve um emaranhado de carne viva: a carne pulsante, que nojo ! troféu: 'açougueiro'\n");
     }
     if(good==1){
-        printf("parabéns, voce deteve Wartrox e seu assistente Marxion! troféu: 'abyss whatcher'\n");
+        printf("parabéns, voce deteve Wartrox e seu assistente Marxion! troféu: 'Abyss Watcher'\n");
     }
     if(neutrall==1){
         printf("parabéns, você alcançou o final neutro! troféu: 'um rapaz trabalhador'\n");
     }
     if(mort==1){
-        printf("voce alcançou o trofeu: 'agonizando pela eternidade'\n");
+        printf("voce condenou Wes e a si próprio à uma tortura interminável\n e um mal terrível ao seu mundo! troféu: 'tão inteligente quanto um asno'\n");
+    }
+    if(atalho==1){
+        printf("parabéns, você foi direto para o final por um atalho! troféu: 'speedruner'");
+    }
+    if(visitouFloresta == 1){
+        printf("parabéns, você visitou a floresta e sobreviveu! troféu: 'fanático pelo Utinga'");
     }
     return 0;
 }
@@ -101,7 +110,84 @@ void resetGame() {
     checkpointwes = 0;
 }
 
-int badend(){
+void onca(){
+printf("Continuação:\n");
+sleep(2);
+
+printf("A criatura começou a se comunicar:\n");
+sleep(2);
+
+printf("???: você… não pertence a esse mundo, nem aquele… ser… o que traz vocês aqui nesse mundo?\n");
+sleep(3);
+printf("Walter: e-e-euu… não sei dizer, estávamos em um hospício abandonado quando fomos pegos por pessoas e capturados.\n");
+sleep(3);
+printf("???: hospício? Hm… O que é um hospício? ……. Seja como for, você citou mais alguém certo? Suponho que não seja aquilo que estava lhe perseguindo.\n");
+sleep(3);
+printf("Walter: sim, estava procurando meu amigo Wes, você viu ele? Ele é mais ou menos da minha altura, um pouco mais magro e deve estar se cagando de medo.\n");
+sleep(3);
+printf("???: me parece que você está se descrevendo… enfim, não tenho muito tempo a perder, há um mau maior planejando algo…\n");
+sleep(3);
+printf("eu sinto uma energia muito forte dentro daquele castelo, talvez você devesse procurar lá.\n");
+sleep(3);
+printf("A criatura desaparece no ar na sua frente… uma pequena bola de luz avança contra seu corpo e desaparece, você sente uma ressonância com as coisas ao seu redor.\n");
+sleep(3);
+printf("Walter: isso foi muito estranho, será que aquele monstro ainda está por aqui?\n");
+sleep(3);
+printf("Você lentamente tenta voltar pelo caminho de onde você entrou pela floresta, olhando cada canto, você vê apenas restos de animais mutilados e algo que parece ser um sangue roxo, está fedendo muito.\n");
+sleep(3);
+printf("Você finalmente consegue sair da floresta, agora coberta de uma mistura de roxo e pedaços de animais.\n");
+sleep(3);
+printf("Você tem 2 opções de local:\n");
+sleep(2);
+printf("1 - Ir para a cidade.\n");
+    printf("2 - Ir para o castelo [opção história].\n");
+    printf("Escolha: ");
+    scanf("%d", &escolha);
+
+    if (escolha == 1) {
+        printf("Você passa mais uma vez por aquele local desolado, não mudou nada,\n");
+        printf("além de parecer agora mais abandonado depois de ter sido parcialmente destruído.\n");
+        printf("A cabana que antes você e aquele falso amigo ficaram, estava completamente destroçada.\n");
+        printf("Quem dera que ainda desse pra chamar aquilo de 'cabana'.\n");
+        printf("Você não encontra nada de útil na cidade e decide ir para o castelo.\n");
+        sleep(6);
+        printf("gostaria de marcar o checkpoint? [1] Sim / [0] Não: ");
+        scanf("%d", &checsave);
+        while(checsave != 0 && checsave != 1) {
+            printf("Opção inválida. Digite 1 para SIM ou 0 para NÃO.\n");
+            scanf("%d", &checsave);
+        }
+        if(checsave == 1 && checkpointcastelofuga == 0){
+            printf("checkpoint marcado");
+            sleep(2);
+            checkpoint = 4;
+            checkpointcastelofuga = 1;
+            checkpointsMarcados++;
+        }
+        castelofuga();
+    } 
+    else{
+        printf("Você caminha em direção ao castelo, pensando se aquele efeito de distância ainda está presente\n");
+        printf("e se aquela barreira permanece de pé, porém você sente que ela está se dissipando.\n");
+        sleep(5);
+        printf("gostaria de marcar o checkpoint? [1] Sim / [0] Não: ");
+        scanf("%d", &checsave);
+        while(checsave != 0 && checsave != 1) {
+            printf("Opção inválida. Digite 1 para SIM ou 0 para NÃO.\n");
+            scanf("%d", &checsave);
+        }
+        if(checsave == 1 && checkpointcastelofuga == 0){
+            printf("checkpoint marcado");
+            sleep(2);
+            checkpoint = 4;
+            checkpointcastelofuga = 1;
+            checkpointsMarcados++;
+        }
+        castelofuga();
+    } 
+}
+
+void badend(){
     printf("Pergunta: Quem vai usar a faca e derramar seu sangue no círculo?\n");
     printf("1 - Wes\n");
     printf("2 - Você\n");
@@ -141,12 +227,11 @@ if (escolha == 2 || escolha == 1) {
     sleep(3);
     printf("final ruim! tente alcançar os outros finais !\n");
     mort++;
-}
-    return 0;
+    }
+    conquistas();
 }
 
-int goodEnding(){//fase final bom
-    return 0;
+void goodEnding(){//fase final bom
     printf("Aquele pedaço de carne que você pegou, escorrega do seu bolso, Marxion é o primeiro a notar…\n");
     sleep(4);
     printf("Marxion: como foi que você conseguiu isso em seu merdinha?\n");
@@ -202,7 +287,7 @@ int goodEnding(){//fase final bom
         sleep(4);
         printf("Você se encontra com o mesmo destino de Wes e tem seu corpo desmembrado.\n");
         sleep(3);
-        return morte();
+        morte();
     }
     else{
         printf("1- A floresta tinha um abismo notável na entrada da floresta,\n");
@@ -367,24 +452,11 @@ int goodEnding(){//fase final bom
         sleep(2);
         good++;
         conquistas();
-        return 0;
     }
     
 }
 
-int neutralEnding(){//fase final neutro
-    printf("gostaria de marcar o checkpoint? [1] Sim / [0] Não: ");
-    scanf("%d", &checsave);
-    while(checsave != 0 && checsave != 1) {
-        printf("Opção inválida. Digite 1 para SIM ou 0 para NÃO.\n");
-        scanf("%d", &checsave);
-    }
-    if(checsave == 1 && checkpointend == 0){
-        checkpoint = 8;
-        checkpointend = 1;
-        checkpointsMarcados++;
-    }
-    
+void neutralEnding(){//fase final neutro
     printf("Parece que uma criatura que estava a espreita começou a atacar Marxion.\n");
     sleep(3);
     printf("A criatura desferia golpes ferozes contra todas as direções, acertou você e Wes, mas você conseguiu se soltar.\n");
@@ -406,7 +478,7 @@ int neutralEnding(){//fase final neutro
         sleep(3);
         printf("Wartrox simplesmente corta o cabo e corta a sua cabeça sem nem perceber. Fim de jogo.\n");
         sleep(3);
-        return morte();
+        morte();
     }
      else if(escolha==2){
          printf("2- Você decide que aquela era a melhor chance de você fugir.\n");
@@ -491,24 +563,11 @@ int neutralEnding(){//fase final neutro
             sleep(3);
             printf("Ele usa para explodir a criatura Nada, você é pego na explosão colateral. Fim de jogo.\n");
             sleep(3);
-            return morte();
+            morte();
         }
-    return 0;
 }
 
-int wes(){//fase 3.1.5 caminho para finalbom/regular
-    printf("gostaria de marcar o checkpoint? [1] Sim / [0] Não: ");
-    scanf("%d", &checsave);
-    while(checsave != 0 && checsave != 1) {
-        printf("Opção inválida. Digite 1 para SIM ou 0 para NÃO.\n");
-        scanf("%d", &checsave);
-    }
-    if(checsave == 1 && checkpointwes == 0){
-        checkpoint = 7;
-        checkpointwes = 1;
-        checkpointsMarcados++;
-    return 0;
-    }
+void wes(){//fase 3.1.5 caminho para finalbom/regular
     printf("Ao acordar, você está no laboratório preso que nem Wes, Wes agora estava acordado,\n mas você está começando a entender o porquê dele estar tão fraco,\n");
     sleep(4);
     printf("aqueles tubos estavam tirando toda a que lhe restava, você sente que não consegue nem sequer mexer os braços direito.\n");
@@ -528,12 +587,25 @@ int wes(){//fase 3.1.5 caminho para finalbom/regular
     printf("Você tenta se debater com os cabos, mas eles não mexem, porém isso resultou em uma coisa…\n");
     sleep(4);
     if (carnepulsante == 1){
-        return goodEnding();
+        goodEnding();
     }
-    return neutralEnding();
+    printf("gostaria de marcar o checkpoint? [1] Sim / [0] Não: ");
+    scanf("%d", &checsave);
+    while(checsave != 0 && checsave != 1) {
+        printf("Opção inválida. Digite 1 para SIM ou 0 para NÃO.\n");
+        scanf("%d", &checsave);
+    }
+    if(checsave == 1 && checkpointend == 0){
+        printf("checkpoint marcado...");
+        sleep(2);
+        checkpoint = 8;
+        checkpointend = 1;
+        checkpointsMarcados++;
+    }
+    neutralEnding();
 }
 
-int depositofuga(){//fase 3.2.3caminho para final ruim
+void depositofuga(){//fase 3.2.3caminho para final ruim
     printf("tem um homem velho, tão magro que você poderia ver seus ossos mesmo debaixo dos trapos que ele vestia.\n");
     sleep(3);
     do {
@@ -691,12 +763,24 @@ if (escolha == 1) {
         sleep(3);
         printf("Você interpreta que para abrir o portal, é preciso sangue ser derramado no círculo, assim como nas imagens.\n");
         sleep(3);
-        return badend();
+        printf("gostaria de marcar o checkpoint? [1] Sim / [0] Não: ");
+        scanf("%d", &checsave);
+        while(checsave != 0 && checsave != 1) {
+            printf("Opção inválida. Digite 1 para SIM ou 0 para NÃO.\n");
+            scanf("%d", &checsave);
+        }
+        if(checsave == 1 && checkpointbadend == 0){
+            printf("checkpoint marcado...");
+            sleep(2);
+            checkpoint = 9;
+            checkpointbadend = 1;
+            checkpointsMarcados++;
+        }
+        badend();
 }
-    return 0;
 }
 
-int deposito(){//fase 3.2.2 caminho para final ruim
+void deposito(){//fase 3.2.2 caminho para final ruim
     printf("Após essa conversa os 2 desconhecidos acabam saindo do depósito,\n");
     sleep(3);
     printf("trancando a porta ao saírem, você sabe que tem algo de errado nesta mansão,\n");
@@ -737,7 +821,7 @@ int deposito(){//fase 3.2.2 caminho para final ruim
             sleep(3);
             printf("com poucas celas e com uma única porta reforçada, e em uma das celas\n");
             sleep(3);
-            return depositofuga();
+            depositofuga();
         }
         else{
             printf("Você continua bisbilhotando o depósito quando a porta abre de novo,\n");
@@ -747,25 +831,12 @@ int deposito(){//fase 3.2.2 caminho para final ruim
             printf("procuraram você, e alguns segundos depois deles entrarem, seus gritos\n");
             sleep(3);
             printf("ecoaram por aquele depósito...\n");
-            return morte();
+            morte();
         }
     }
-
-    return 0;
 }
 
-int mansao(){//fase3.2.1 caminho para final ruim
-    printf("gostaria de marcar o checkpoint? [1] Sim / [0] Não: ");
-    scanf("%d", &checsave);
-    while(checsave != 0 && checsave != 1) {
-        printf("Opção inválida. Digite 1 para SIM ou 0 para NÃO.\n");
-        scanf("%d", &checsave);
-    }
-    if(checsave == 1 && checkpointmansao == 0){
-        checkpoint = 6;
-        checkpointmansao = 1;
-        checkpointsMarcados++;
-    }
+void mansao(){//fase3.2.1 caminho para final ruim
     printf("Quanto mais vocês adentram esse lugar, mais sinistro ele parece,\n");
     sleep(4);
     printf("até que vocês se deparam com uma mansão, quase escondida na paisagem,\n");
@@ -834,7 +905,7 @@ int mansao(){//fase3.2.1 caminho para final ruim
         sleep(4);
         printf("Você não teve a mínima chance de reagir…\n");
         sleep(3);
-        return morte();
+        morte();
     }
     else{
         printf("Você decide dar uma volta pela mansão, festas como essa nunca foram do seu feitio,\n");
@@ -880,7 +951,7 @@ int mansao(){//fase3.2.1 caminho para final ruim
             sleep(4);
             printf("Desconhecido 2: Tomara que seja isso mesmo Haahaha! vamos então!\n");
             sleep(3);
-            return deposito();
+            deposito();
         }
         else{
             printf("Você fica parado e é rapidamente avistado por 2 homens,\n");
@@ -897,14 +968,12 @@ int mansao(){//fase3.2.1 caminho para final ruim
             sleep(3);
             printf("a lâmina atravessa seu coração e seu corpo, sua morte foi instantânea.\n");
             sleep(3);
-            return morte();
+            morte();
         }
     }
-
-    return 0;
 }
 
-int dormir(){//fase3.2 caminho para final ruim
+void dormir(){//fase3.2 caminho para final ruim
     printf("Você ignora essa sensação,\n");
     sleep(3);
     printf("afinal com tantas coisas que vocês passaram,\n");
@@ -989,7 +1058,20 @@ int dormir(){//fase3.2 caminho para final ruim
             sleep(3);
             printf("não existe uma escolha boa, e sim a menos pior.\n");
             sleep(3);
-            return mansao();
+                printf("gostaria de marcar o checkpoint? [1] Sim / [0] Não: ");
+            scanf("%d", &checsave);
+            while(checsave != 0 && checsave != 1) {
+                printf("Opção inválida. Digite 1 para SIM ou 0 para NÃO.\n");
+                scanf("%d", &checsave);
+            }
+            if(checsave == 1 && checkpointmansao == 0){
+                printf("checkpoint marcado\n");
+                sleep(2);
+                checkpoint = 6;
+                checkpointmansao = 1;
+                checkpointsMarcados++;
+            }
+            mansao();
         }
         else{
             printf("Você convence Wes que aquele caminho não era bom,\n");
@@ -1008,7 +1090,7 @@ int dormir(){//fase3.2 caminho para final ruim
             sleep(3);
             printf("Fim de jogo!\n");
             sleep(2);
-            return morte();
+            morte();
         }
     }
     else if(escolha==2){
@@ -1018,7 +1100,7 @@ int dormir(){//fase3.2 caminho para final ruim
         sleep(3);
         printf("não existe uma escolha boa, e sim a menos pior.\n");
         sleep(3);
-        return mansao();
+        mansao();
     }
     else{
         printf("Você convence Wes que aquele caminho não era bom,\n");
@@ -1037,12 +1119,11 @@ int dormir(){//fase3.2 caminho para final ruim
         sleep(3);
         printf("Fim de jogo!\n");
         sleep(2);
-        return morte();
+        morte();
     }
-    return 0;
 }
 
-int prisao(){//fase 3.1.5 caminho para final bom/final regular
+void prisao(){//fase 3.1.5 caminho para final bom/final regular
     printf("Conforme a dupla saía da prisão, as vozes ficavam cada vez mais distantes\n");
 	sleep(4);
 	printf("e você não conseguia mais compreender o que era dito,\n");
@@ -1066,7 +1147,7 @@ int prisao(){//fase 3.1.5 caminho para final bom/final regular
         sleep(4);
         printf("e você sente um peso invisível no seu pescoço lhe empurrando escada abaixo, seu medo se concretizou.\n");
         sleep(3);
-	    return morte();
+	    morte();
     }
     else if(escolha==2){
         printf("Você sente que logo logo está chegando até Wes, o verdadeiro Wes…\n");
@@ -1107,7 +1188,7 @@ int prisao(){//fase 3.1.5 caminho para final bom/final regular
             sleep(3);
             printf("Você cai de cara no chão direto com a luz, seu corpo inteiro foi reduzido à partículas luminosas.\n");
             sleep(3);
-            return morte();
+            morte();
         }
         else if(escolha==2 && mecanismo==0){
             printf("2- Você procura algo que possa facilitar a retirada dos cabos.\n");
@@ -1155,7 +1236,20 @@ int prisao(){//fase 3.1.5 caminho para final bom/final regular
             sleep(3);
             printf("Você cai sobre o chão, vendo a porta do castelo fechando, enquanto uma figura observa…\n");
             sleep(3);
-            return wes();
+            printf("gostaria de marcar o checkpoint? [1] Sim / [0] Não: ");
+            scanf("%d", &checsave);
+            while(checsave != 0 && checsave != 1) {
+                printf("Opção inválida. Digite 1 para SIM ou 0 para NÃO.\n");
+                scanf("%d", &checsave);
+            }
+            if(checsave == 1 && checkpointwes == 0){
+                printf("checkpoint marcado");
+                sleep(2);
+                checkpoint = 7;
+                checkpointwes = 1;
+                checkpointsMarcados++;
+            }
+            wes();
         }
 
     }
@@ -1170,23 +1264,11 @@ int prisao(){//fase 3.1.5 caminho para final bom/final regular
         sleep(4);
         printf("e arrastando ela pela escadaria toda, sua cara está irreconhecível.\n");
         sleep(3);
-        return morte();
+        morte();
     }
-    return 0;
 }
 
-int porao(){//fase 3.1.4 caminho para final bom/ final regular
-    printf("gostaria de marcar o checkpoint? [1] Sim / [0] Não: ");
-    scanf("%d", &checsave);
-    while(checsave != 0 && checsave != 1) {
-        printf("Opção inválida. Digite 1 para SIM ou 0 para NÃO.\n");
-        scanf("%d", &checsave);
-    }
-    if(checsave == 1 && checkpointporao == 0){
-        checkpoint = 5;
-        checkpointporao = 1;
-        checkpointsMarcados++;
-    }
+void porao(){//fase 3.1.4 caminho para final bom/ final regular
     printf("Você segue encarando para o abismo à sua frente,\n");
     sleep(4);
     printf("o seu maior medo nem é a escuridão, é algo de lhe empurrar da escada,\n");
@@ -1222,7 +1304,7 @@ int porao(){//fase 3.1.4 caminho para final bom/ final regular
     printf("3- Debaixo de uma cama quebrada.\n");
     printf("escolha: ");
     scanf("%d",&escolha);
-    if(escolha==1 || escolha==2){
+    if(escolha==1 || escolha==3){
         printf("Não cobria muito do seu corpo, mas era o bastante.\n");
         sleep(3);
         printf("Você observa à distância uma conversa entre duas figuras,\n");
@@ -1265,7 +1347,7 @@ int porao(){//fase 3.1.4 caminho para final bom/ final regular
         sleep(3);
         printf("Wartrox: ótimo, eu ainda tenho muito a fazer contra ele...\n");
         sleep(3);
-        return prisao();
+        prisao();
     }
     else{
         printf("Você decide escolher ficar debaixo de uma mesa, parecia simples, porém eficaz...\n");
@@ -1280,12 +1362,11 @@ int porao(){//fase 3.1.4 caminho para final bom/ final regular
         sleep(4);
         printf("Não sobra nada de sólido no seu corpo.\n");
         sleep(3);
-        return morte();
+        morte();
     }
-    return 0;
 }
 
-int castelointerior(){//fase 3.1.3 caminho para final bom/ final regular 
+void castelointerior(){//fase 3.1.3 caminho para final bom/ final regular 
     
     printf("Você se depara com um salão com corredores e uma escada no meio do salão,\n");
     sleep(4);
@@ -1325,7 +1406,21 @@ int castelointerior(){//fase 3.1.3 caminho para final bom/ final regular
         sleep(4);
         printf("Um perigo eminente está para recair sobre você.\n");
         sleep(4);
-        return wes();
+        printf("gostaria de marcar o checkpoint? [1] Sim / [0] Não: ");
+        scanf("%d", &checsave);
+        while(checsave != 0 && checsave != 1) {
+            printf("Opção inválida. Digite 1 para SIM ou 0 para NÃO.\n");
+            scanf("%d", &checsave);
+        }
+        if(checsave == 1 && checkpointwes == 0){
+            printf("checkpoint marcado");
+            sleep(2);
+            checkpoint = 7;
+            checkpointwes = 1;
+            checkpointsMarcados++;
+        }
+        atalho++;
+        wes();
     }
     else{
         printf("É melhor seguir em frente, a oferta é tentadora,\n");
@@ -1368,7 +1463,7 @@ int castelointerior(){//fase 3.1.3 caminho para final bom/ final regular
         sleep(4);
         printf("Você é comprimido por uma força invisível e seu corpo inteiro sofre uma implosão.\n");
         sleep(3);
-        return morte();
+        morte();
     }
     else if(escolha==2){
         printf("A luz tem te ajudado bastante nesses últimos tempos,\n");
@@ -1381,7 +1476,20 @@ int castelointerior(){//fase 3.1.3 caminho para final bom/ final regular
         sleep(3);
         printf("A luz atravessa a porta e segue adiante, você tenta acompanhar e se dá de cara com uma escadaria para um tipo de porão.\n");
         sleep(4);
-        return porao();
+        printf("gostaria de marcar o checkpoint? [1] Sim / [0] Não: ");
+        scanf("%d", &checsave);
+        while(checsave != 0 && checsave != 1) {
+            printf("Opção inválida. Digite 1 para SIM ou 0 para NÃO.\n");
+            scanf("%d", &checsave);
+        }
+        if(checsave == 1 && checkpointporao == 0){
+            printf("checkpoint marcado");
+            sleep(2);
+            checkpoint = 5;
+            checkpointporao = 1;
+            checkpointsMarcados++;
+        }
+        porao();
     }
     else{
         printf("Suas mãos atravessam a luz como se não fossem nada.\n");
@@ -1394,25 +1502,11 @@ int castelointerior(){//fase 3.1.3 caminho para final bom/ final regular
         sleep(3);
         printf("e eventualmente você vira cinzas.\n");
         sleep(3);
-        return morte();
+        morte();
     }
-    
-    return 0;
 }
 
-int castelofuga(){//fase 3.1.2 caminho para final bom/ final regular
-    
-    printf("gostaria de marcar o checkpoint? [1] Sim / [0] Não: ");
-    scanf("%d", &checsave);
-    while(checsave != 0 && checsave != 1) {
-        printf("Opção inválida. Digite 1 para SIM ou 0 para NÃO.\n");
-        scanf("%d", &checsave);
-    }
-    if(checsave == 1 && checkpointcastelofuga == 0){
-        checkpoint = 4;
-        checkpointcastelofuga = 1;
-        checkpointsMarcados++;
-    }
+void castelofuga(){//fase 3.1.2 caminho para final bom/ final regular
 	printf("Incerto do que pode acontecer, você toca na barreira e sente uma luz saindo de seu corpo.\n");
 	sleep(4);
 	printf("A luz interage com a barreira e faz ela quebrar como se fosse pedaços de vidro,\n");
@@ -1457,7 +1551,7 @@ int castelofuga(){//fase 3.1.2 caminho para final bom/ final regular
         sleep(3);
         printf("Você mal pôde descansar apropriadamente, mas tem que seguir em frente.\n");
         sleep(3);
-        return castelointerior();
+        castelointerior();
     }
     else if(escolha==2){
         printf("Você decide que ainda há algo na cidade que pode lhe ajudar,\n");
@@ -1476,12 +1570,11 @@ int castelofuga(){//fase 3.1.2 caminho para final bom/ final regular
         sleep(4);
         carnepulsante++;
         printf("você tem: %d carne pulsante\n",carnepulsante);
-        return castelointerior();
+        castelointerior();
     }
-    return 0;
 }
 
-int florestaFuga(){//fase 3.1.1 caminho para final bom/ final regular
+void florestaFuga(){//fase 3.1.1 caminho para final bom/ final regular
    
     printf("O monstro entra na floresta, ele parece te rastrear mas não precisamente,\n");
 	sleep(4);
@@ -1519,22 +1612,30 @@ int florestaFuga(){//fase 3.1.1 caminho para final bom/ final regular
 	sleep(3);
 	printf("ela poderia ter te matado a qualquer momento, mas não o fez, e agora te encarava.\n");
 	sleep(3);
-    return 0;
+    printf("Pergunta: O que você vai fazer?\n");
+    printf("1 - Atacar a onça.\n");
+    printf("2 - Fingir de morto.\n");
+    printf("3 - Sair correndo do lugar.\n");
+    printf("4 - Não fazer nada.\n");
+    printf("Escolha: ");
+    scanf("%d", &escolha);
+if (escolha == 3) {
+    printf("Você sai correndo com medo de que algo fosse acontecer...\n");
+    sleep(3);
+    printf("Sem ver onde corria pela floresta, você leva um golpe colateral do combate do monstro que te perseguia contra a alcateia de onças...\n");
+    sleep(3);
+    printf("Fica gravemente ferido e sangrando pela cabeça, o seu fim está claro… Fim de jogo.\n");
+    sleep(2);
+    morte();
+} 
+else if (escolha == 1 || escolha == 2 || escolha == 4) {
+    printf("A onça não entendeu a sua intenção e apenas te encarou com mais ênfase.\n");
+    sleep(3);
+    onca();
+} 
 }
 
-int cano(){//fase 3.1 caminho para final bom/ final regular
-    
-    printf("gostaria de marcar o checkpoint? [1] Sim / [0] Não: ");
-    scanf("%d", &checsave);
-    while(checsave != 0 && checsave != 1) {
-        printf("Opção inválida. Digite 1 para SIM ou 0 para NÃO.\n");
-        scanf("%d", &checsave);
-    }
-    if(checsave == 1 && checkpointCano == 0){
-        checkpoint = 3;
-        checkpointCano = 1;
-        checkpointsMarcados++;
-    }
+void cano(){//fase 3.1 caminho para final bom/ final regular
     printf("Antes mesmo dessa criatura se virar, você já estava correndo para fora da cabana,\n");
 	sleep(4);
 	printf("ainda ouvindo a voz ecoando vindo da cabana.\n");
@@ -1562,7 +1663,7 @@ int cano(){//fase 3.1 caminho para final bom/ final regular
 	sleep(4);
 	printf("afinal ainda é madrugada, todo cuidado é pouco ao caminhar.\n");
 	sleep(3);
-    return florestaFuga();
+    florestaFuga();
     }
     else if (escolha == 2){
         printf("Você volta para a cidade, mas é pego imediatamente pelo monstro que o perseguia.\n");
@@ -1575,7 +1676,7 @@ int cano(){//fase 3.1 caminho para final bom/ final regular
         sleep(4);
         printf("Ele grita contra o seu corpo sem vida.\n");
         sleep(3);
-        return morte();
+        morte();
     }
     else if (escolha == 3){
         printf("O castelo não mudou em nada.\n");
@@ -1598,27 +1699,14 @@ int cano(){//fase 3.1 caminho para final bom/ final regular
         sleep(2);
         printf("Até que não sobra mais nenhum pedaço sólido do seu corpo.\n");
         sleep(3);
-        return morte();
+        morte();
     }
     else{
         printf("\nOpção inválida. Tente novamente.\n");
     }
-    return 0;
 }
 
-int cidade() {//fase 3
-    
-    printf("gostaria de marcar o checkpoint? [1] Sim / [0] Não: ");
-    scanf("%d", &checsave);
-    while(checsave != 0 && checsave != 1) {
-        printf("Opção inválida. Digite 1 para SIM ou 0 para NÃO.\n");
-        scanf("%d", &checsave);
-    }
-    if(checsave == 1 && checkpointCidade == 0){
-        checkpoint = 2;
-        checkpointCidade = 1;
-        checkpointsMarcados++;
-    }
+void cidade() {//fase 3
     printf("O que você faz?\n");
     printf("1- Sair da cabana discretamente e fugir\n");
     printf("2- Voltar a dormir \n");
@@ -1682,14 +1770,14 @@ int cidade() {//fase 3
         printf("mas eu já enjoei disso.\n");
         sleep(4);
         printf("Wartrox abre você de dentro para fora pelo seu abdômen\n");
-        return morte();
+        morte();
     }
     else if(escolha == 2){
         printf("Você volta pra cama improvisada e pensa ser só ilusão sua,\n");
 	    sleep(3);
 	    printf("e que situações adversas mudam as pessoas drasticamente.\n");
 	    sleep(3);
-        return dormir();
+        dormir();
     }
     else if(escolha == 3){
 	paulada++;
@@ -1699,7 +1787,20 @@ int cidade() {//fase 3
 	sleep(4);
 	printf("Não-Wes: VERME MISERÁVEL, PENSA MESMO QUE PODE ME MACHUCAR COM UM OBJETO TÃO FRÁGIL?\n");
 	sleep(4);
-        return cano();
+    printf("gostaria de marcar o checkpoint? [1] Sim / [0] Não: ");
+    scanf("%d", &checsave);
+    while(checsave != 0 && checsave != 1) {
+        printf("Opção inválida. Digite 1 para SIM ou 0 para NÃO.\n");
+        scanf("%d", &checsave);
+    }
+    if(checsave == 1 && checkpointCano == 0){
+        printf("checkpoint marcado");
+        sleep(2);
+        checkpoint = 3;
+        checkpointCano = 1;
+        checkpointsMarcados++;
+    }
+    cano();
     }
     else if(escolha == 4){
         printf("\nVocê acorda Wes e começa a questioná-lo sobre a sua chegada até a cidade...\n");
@@ -1750,15 +1851,14 @@ int cidade() {//fase 3
         printf("você foi rasgado em pedaços enquanto agonizava\n");
         sleep(2);
         printf("a criatura parecia estar se divertindo\n");
-        return morte();
+        morte();
     }
     else{
         printf("\nOpção inválida. Tente novamente.\n");
     }
-    return 0;
 }
 
-int floresta() {//fase 2.1
+void floresta() {//fase 2.1
     
     printf("Você caminha até uma floresta que parece idêntica às que você via no seu dia a dia\n");
     sleep(2);
@@ -1780,31 +1880,18 @@ int floresta() {//fase 2.1
         sleep(3);
         printf("você foi atacado e devorado de maneira brutal\n");
         sleep(2);
-        return morte();
+        morte();
     } 
     else if(escolha == 2){
         visitouFloresta = 1;
-        return ritual();
+        ritual();
     } 
     else {
         printf("\nOpção inválida. Tente novamente.\n");
     }
-    return 0;
 }
 
-int ritual() {//fase 2
-    
-    printf("gostaria de marcar o checkpoint? [1] Sim / [0] Não: ");
-    scanf("%d", &checsave);
-    while (checsave != 0 && checsave != 1) {
-        printf("Opção inválida. Digite 1 para SIM ou 0 para NÃO.\n");
-        scanf("%d", &checsave);
-    }
-    if (checsave == 1 && checkpointRitual == 0) {
-        checkpoint = 1;
-        checkpointRitual = 1;
-        checkpointsMarcados++;
-    }
+void ritual() {//fase 2
     printf("Você acorda, em um mundo confuso, como se tivesse acabado de ser criado,\n");
     sleep(2);
     printf("você se levanta e observa 3 lugares à distância:\n");
@@ -1905,19 +1992,31 @@ int ritual() {//fase 2
             sleep(4);
             printf("um sentimento de insegurança lhe toma pela noite e você se levanta:\n");
             sleep(1);
-            return cidade();
+            printf("gostaria de marcar o checkpoint? [1] Sim / [0] Não: ");
+            scanf("%d", &checsave);
+            while(checsave != 0 && checsave != 1) {
+                printf("Opção inválida. Digite 1 para SIM ou 0 para NÃO.\n");
+                scanf("%d", &checsave);
+            }
+            if(checsave == 1 && checkpointCidade == 0){
+                printf("checkpoint marcado\n");
+                sleep(2);
+                checkpoint = 2;
+                checkpointCidade = 1;
+                checkpointsMarcados++;
+            }
+            cidade();
         } 
         else if (escolha == 3 && visitouFloresta == 0) {
-            return floresta();
+            floresta();
         }
         else {
             printf("\nOpção inválida ou já visitada.\n");
         }
     } while(1);
-    return 0;
 }
 
-int Escapar() {//fase 1
+void Escapar() {//fase 1
     
     int ajuda = 0;
     printf("Você acorda em uma sala escura...\n");
@@ -1961,7 +2060,20 @@ int Escapar() {//fase 1
             sleep(5);
             printf(", sem nenhuma noção de espaço ou tempo. Você fecha os olhos e dispersa sua consciência.\n");
             sleep(5);
-            return ritual();
+            printf("gostaria de marcar o checkpoint? [1] Sim / [0] Não: ");
+            scanf("%d", &checsave);
+            while (checsave != 0 && checsave != 1) {
+                printf("Opção inválida. Digite 1 para SIM ou 0 para NÃO.\n");
+                scanf("%d", &checsave);
+            }
+            if (checsave == 1 && checkpointRitual == 0) {
+                printf("checkpoint marcado\n");
+                sleep(2);
+                checkpoint = 1;
+                checkpointRitual = 1;
+                checkpointsMarcados++;
+            }
+            ritual();
         } 
         else if (escolha == 2){
             printf("\nVocê observa a sala mais atentamente...\n");
@@ -1991,7 +2103,7 @@ int Escapar() {//fase 1
                 sleep(3);
                 printf("Você foi morto e reduzido em pedaços minúsculos por uma força invisível.\n");
                 sleep(4);
-                return morte();
+                morte();
             }
         }
         else if(escolha == 4){
@@ -2007,16 +2119,15 @@ int Escapar() {//fase 1
             sleep(3);
             printf("Você não sente nem sequer a sua própria presença no mundo.\n");
             sleep(2);
-            return morte();
+            morte();
         }
         else {
             printf("\nOpção inválida. Tente novamente.\n");
         }
-    } while (escolha != 1); 
-    return 0;
+    } while (escolha != 1);
 }
 
-int morte() {//função de morte e checkpoints
+void morte() {//função de morte e checkpoints
     
     vidas--;
     if (vidas > 0){
@@ -2043,36 +2154,35 @@ int morte() {//função de morte e checkpoints
         if (escolha == 0) {
             printf("Obrigado por jogar!\n");
             conquistas();
-            return 0;
         } else {
             printf("Reiniciando do último checkpoint...\n");
             sleep(3);
             if(checkpoint == 0){
-                return Escapar();
+                Escapar();
             }
             else if(checkpoint == 1){
-                return ritual();
+                ritual();
             }
             else if(checkpoint == 2){
-                return cidade();
+                cidade();
             }
             else if(checkpoint == 3){
-                return cano();
+                cano();
             }
             else if(checkpoint == 4){
-                return castelofuga();
+                castelofuga();
             }
             else if(checkpoint == 5){
-                return porao();
+                porao();
             }
             else if(checkpoint == 6){
-                return mansao();
+                mansao();
             }
             else if(checkpoint == 7){
-                return wes();
+                wes();
             }
             else if(checkpoint == 8){
-                return neutralEnding();
+                neutralEnding();
             }
         }
     } 
@@ -2090,13 +2200,12 @@ int morte() {//função de morte e checkpoints
         } while (escolha != 0 && escolha != 1);
         if (escolha == 1) {
             resetGame();
-            return Escapar();
+            Escapar();
         } else {
             printf("Obrigado por jogar!\n");
-            return conquistas();
+            conquistas();
         }
     }
-    return 0;
 }
 
 int main() {//menu
