@@ -58,6 +58,7 @@ void goodEnding();
 void neutralEnding();
 void badend();
 void onca();
+void system();
 
 // função de conquistas
 int conquistas() {
@@ -1617,7 +1618,7 @@ void florestaFuga(){//fase 3.1.1 caminho para final bom/ final regular
     printf("2 - Fingir de morto.\n");
     printf("3 - Sair correndo do lugar.\n");
     printf("4 - Não fazer nada.\n");
-    printf("Escolha: ");
+    printf("Escolha: \n");
     scanf("%d", &escolha);
 if (escolha == 3) {
     printf("Você sai correndo com medo de que algo fosse acontecer...\n");
@@ -2209,7 +2210,9 @@ void morte() {//função de morte e checkpoints
 }
 
 int main() {//menu
-    setlocale(LC_ALL, "portuguese");
+    system("chcp 65001");
+    system("cls");
+    setlocale(LC_ALL, "pt_BR.UTF-8");
     printf("--  _________  --\n");
     printf("_|=============|_\n");
     printf("||Abismo da Luz||\n");
