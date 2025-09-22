@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <unistd.h>
 #include <locale.h>
+#include <stdlib.h>
 
 //var limitantes
 int visitouCastelo = 0;
@@ -21,6 +22,8 @@ int good = 0;
 int neutrall = 0;
 int mort=0;
 int atalho=0;
+int cano2=0;
+int con=0;
 
 //itens
 int carnepulsante=0;
@@ -34,7 +37,7 @@ int checkpointporao = 0;
 int checkpointmansao = 0;
 int checkpointwes = 0;
 int checkpointend = 0;
-int checkpointbadend =0;//9
+int checkpointbadend =0;
 
 // declaração de funções
 void ritual();
@@ -58,40 +61,42 @@ void goodEnding();
 void neutralEnding();
 void badend();
 void onca();
-void system();
 
 // função de conquistas
 int conquistas() {
     printf("número de checkpoints marcados: %d\n", checkpointsMarcados);
     sleep(2);
-    if (checkpointsMarcados == 0){
-        printf("parabéns, você zerou o jogo sem salvar nenhuma vez! troféu: 'o que é um checkpoint ?'\n");
+    if (checkpointsMarcados == 0 && con==1){
+        printf("parabéns, você zerou o jogo sem salvar nenhuma vez! troféu: 'A que é um checkpoint ?'\n");
     }
     if (vidas == 3){
         printf("parabéns, você zerou o jogo sem morrer nenhuma vez! troféu: 'Zero Mortes, Zero Desculpas'\n");
     }
     if(paulada==1){
-        printf("parabéns, você quebrou um cano no seu amigo, ou melhor...não amigo. troféu:'amigos amigos, negócios aparte'\n");
+        printf("parabéns, você quebrou um cano no seu amigo, ou melhor...não amigo. troféu:'Amigos amigos, negócios aparte'\n");
     }
     if(carnepulsante==1){
-        printf("parabéns, você obteve um emaranhado de carne viva: a carne pulsante, que nojo ! troféu: 'açougueiro'\n");
+        printf("parabéns, você obteve um emaranhado de carne viva: a carne pulsante, que nojo ! troféu: 'Açougueiro'\n");
     }
     if(good==1){
         printf("parabéns, voce deteve Wartrox e seu assistente Marxion! troféu: 'Abyss Watcher'\n");
     }
     if(neutrall==1){
-        printf("parabéns, você alcançou o final neutro! troféu: 'um rapaz trabalhador'\n");
+        printf("parabéns, você alcançou o final neutro! troféu: 'Apenas mais um dia'\n");
     }
     if(mort==1){
         printf("voce condenou Wes e a si próprio à uma tortura interminável\n e um mal terrível ao seu mundo! troféu: 'tão inteligente quanto um asno'\n");
     }
     if(atalho==1){
-        printf("parabéns, você foi direto para o final por um atalho! troféu: 'speedruner'");
+        printf("parabéns, você foi direto para o final por um atalho! troféu: 'Sonho maluco'");
     }
     if(visitouFloresta == 1){
-        printf("parabéns, você visitou a floresta e sobreviveu! troféu: 'fanático pelo Utinga'");
+        printf("parabéns, você visitou a floresta e sobreviveu! troféu: 'Fanático pelo Utinga'");
     }
-    return 0;
+    if(cano2==1){
+        printf("parabéns, voce acertou Marxion uma segunda vez com o cano...\nou pelo menos tentou! troféu: 'A vingança do cano'");
+    }
+    exit(0);
 }
 // reset de variáveis
 void resetGame() {
@@ -228,6 +233,7 @@ if (escolha == 2 || escolha == 1) {
     sleep(3);
     printf("final ruim! tente alcançar os outros finais !\n");
     mort++;
+    con++;
     }
     conquistas();
 }
@@ -452,6 +458,7 @@ void goodEnding(){//fase final bom
         printf("Fim de Jogo. final bom, muito obrigado por ter jogado abismo da luz !!!\n");
         sleep(2);
         good++;
+        con ++;
         conquistas();
     }
     
@@ -464,9 +471,9 @@ void neutralEnding(){//fase final neutro
     sleep(3);
     printf("Wes ainda estava preso, você tenta soltá-lo, porém não tem força para isso.\n");
     sleep(3);
-    printf("Aquela criatura era Nada, um ser composto de pura violência e ausência de razão.\n");
+    printf("Aquela criatura era 'Nada', um ser composto de pura violência e ausência de razão.\n");
     sleep(3);
-    printf("O que ele fazia ali era desconhecido, mas parecia que Wartrox havia antecipado isso e começa a mexer no painel em que Wes estava preso, até mesmo te ignorando.\n");
+    printf("O que ele fazia ali era desconhecido, mas parecia que Wartrox havia antecipado isso e \ncomeça a mexer no painel em que Wes estava preso, até mesmo te ignorando.\n");
     sleep(3);
     printf("Pergunta: o que você vai fazer?\n");
     printf("1- Usar um dos cabos que te prenderam, e acertar Wartrox.\n");
@@ -484,74 +491,74 @@ void neutralEnding(){//fase final neutro
      else if(escolha==2){
          printf("2- Você decide que aquela era a melhor chance de você fugir.\n");
          sleep(3);
-         printf("Talvez Wes tivesse a mesma sorte que você e Nada poderia cortar o cabo com um de seus golpes desgovernados.\n");
+         printf("Talvez Wes tivesse a mesma sorte que você e 'Nada' poderia cortar o cabo com um de seus golpes desgovernados.\n");
          sleep(3);
          printf("Você escapa do laboratório e chega até o térreo do castelo.\n");
          sleep(3);
-          /* Continuação do cenário */
-    printf("Enquanto você fugia, você vê Wes se arrastando pela escada, parece que ele de fato conseguiu fugir, mas estava muito debilitado.\n");
-    sleep(3);
-    printf("Você o carrega pelo braço e vocês caminham até fora do castelo.\n");
-    sleep(3);
-    printf("Ao olhar para trás, você vê o castelo sendo reconfigurado para uma forma gigante: um monstro de 6 patas e 3 cabeças, pernas como de uma aranha e olhos como de uma mosca.\n");
-    sleep(3);
-    printf("Aquilo estava mirando em vocês.\n");
-    sleep(2);
-    printf("Vocês correm na melhor velocidade que podiam até a floresta para fazê-lo perder campo de visão, porém uma das patas rasga uma perna de ambos.\n");
-    sleep(3);
-    printf("Ao se aproximar da floresta, crateras começaram a surgir do céu, do chão e, na sua frente, um abismo que emanava um ar fresco, como se tivesse uma saída por lá.\n");
-    sleep(3);
-    printf("Você estava com medo, não sabia se aquilo iria te ajudar ou apenas te matar.\n");
-    sleep(2);
-    printf("Antes mesmo de pensar, você olha para trás e vê Wes sendo empalado por duas patas daquele ser grotesco.\n");
-    sleep(3);
-    printf("De longe, você olha para a cara de Wes em seus últimos momentos.\n");
-    sleep(3);
-    printf("Wes: obrigado por tudo Walter… eu te am—-\n");
-    sleep(2);
-    printf("Antes que Wes terminasse de falar, a criatura perfura o coração de Wes e uma explosão de luz cobre toda a área ao redor dele,\n eventualmente te empurrando contra o abismo.\n");
-    sleep(3);
-    printf("Sua perna até voou junto contigo.\n");
-    sleep(2);
-    printf("Você sente uma barreira te impedindo de cair completamente pelo abismo, porém uma segunda explosão de luz força seu corpo contra a barreira e a quebra.\n");
-    sleep(3);
-    printf("Enquanto tudo que você podia fazer era chorar.\n");
-    sleep(2);
-    printf("Walter: WEEEEEEEEEES!!! NÃO MORRA SEM MIM!\n");
-    sleep(3);
-    printf("A sua vista fica embaçada enquanto você via aquele mundo se destruir por completo.\n");
-    sleep(3);
-    printf("Seu amigo havia morrido, você fugiu, mas a que preço?\n");
-    sleep(2);
-    printf("Essa pergunta ecoava pelo silêncio que tomava a sua queda durante o abismo, e um sentimento de amargura e dor preenchia seu coração.\n");
-    sleep(3);
-    printf("Você acorda, está de tarde, chovendo, você acorda com a água batendo na sua cara.\n");
-    sleep(3);
-    printf("Seu corpo está completamente dormente, sua perna está conectada de alguma forma, mas Wes não está contigo.\n");
-    sleep(3);
-    printf("Tudo foi em vão, as gravações do hospício estavam perdidas pela chuva, suas lágrimas se misturavam com as gotas da chuva…\n");
-    sleep(3);
-    printf("Você se levanta, dá uma olhada na sala ao seu redor, cheio de marcas e símbolos de uma espécie de religião.\n");
-    sleep(3);
-    printf("As paredes começaram a cair por conta da intensa chuva que estava afetando o lugar.\n");
-    sleep(3);
-    printf("Você foi obrigado a sair de mãos vazias do hospício, e muito mais que mãos vazias, sem um amigo que você tanto gostava…\n");
-    sleep(3);
-    printf("Ao entrar no carro, todo molhado e triste, você olha para o seu celular e vê que dia era.\n");
-    sleep(3);
-    printf("Walter: Segunda? Hahahaha……… eu mereço mesmo.\n");
-    sleep(3);
-    printf("Você dirige voltando para casa para trocar de roupa e ir trabalhar.\n");
-    sleep(3);
-    printf("É bem capaz que vai levar um esporro do seu chefe por chegar tarde e não conseguir nenhum material de pesquisa.\n");
-    sleep(3);
-    printf("Havia algo no seu bolso quando você esticou para pegar o que tinha lá, estava escrito um bilhete: “Não se esqueça, da Luz que ilumina o Abismo no seu coração”.\n");
-    sleep(3);
-    printf("Lágrimas caíram, você dirige com um peso que nunca poderá contar para ninguém, e é obrigado a tratar como se tudo aquilo não tivesse acontecido.\n");
-    sleep(3);
-    printf("Fim de Jogo. Final Mediano.\nTente conseguir os outros dois finais!");
-    neutrall++;
-    conquistas();
+            printf("Enquanto você fugia, você vê Wes se arrastando pela escada, parece que ele de fato conseguiu fugir, mas estava muito debilitado.\n");
+            sleep(3);
+            printf("Você o carrega pelo braço e vocês caminham até fora do castelo.\n");
+            sleep(3);
+            printf("Ao olhar para trás, você vê o castelo sendo reconfigurado para uma forma gigante: um monstro de 6 patas e 3 cabeças, pernas como de uma aranha e olhos como de uma mosca.\n");
+            sleep(3);
+            printf("Aquilo estava mirando em vocês.\n");
+            sleep(2);
+            printf("Vocês correm na melhor velocidade que podiam até a floresta para fazê-lo perder campo de visão, porém uma das patas rasga uma perna de ambos.\n");
+            sleep(3);
+            printf("Ao se aproximar da floresta, crateras começaram a surgir do céu, do chão e, na sua frente, um abismo que emanava um ar fresco, como se tivesse uma saída por lá.\n");
+            sleep(3);
+            printf("Você estava com medo, não sabia se aquilo iria te ajudar ou apenas te matar.\n");
+            sleep(2);
+            printf("Antes mesmo de pensar, você olha para trás e vê Wes sendo empalado por duas patas daquele ser grotesco.\n");
+            sleep(3);
+            printf("De longe, você olha para a cara de Wes em seus últimos momentos.\n");
+            sleep(3);
+            printf("Wes: obrigado por tudo Walter… eu te am—-\n");
+            sleep(2);
+            printf("Antes que Wes terminasse de falar, a criatura perfura o coração de Wes e uma explosão de luz cobre toda a área ao redor dele,\n eventualmente te empurrando contra o abismo.\n");
+            sleep(3);
+            printf("Sua perna até voou junto contigo.\n");
+            sleep(2);
+            printf("Você sente uma barreira te impedindo de cair completamente pelo abismo, porém uma segunda explosão de luz força seu corpo contra a barreira e a quebra.\n");
+            sleep(3);
+            printf("Enquanto tudo que você podia fazer era chorar.\n");
+            sleep(2);
+            printf("Walter: WEEEEEEEEEES!!! NÃO MORRA SEM MIM!\n");
+            sleep(3);
+            printf("A sua vista fica embaçada enquanto você via aquele mundo se destruir por completo.\n");
+            sleep(3);
+            printf("Seu amigo havia morrido, você fugiu, mas a que preço?\n");
+            sleep(2);
+            printf("Essa pergunta ecoava pelo silêncio que tomava a sua queda durante o abismo, e um sentimento de amargura e dor preenchia seu coração.\n");
+            sleep(3);
+            printf("Você acorda, está de tarde, chovendo, você acorda com a água batendo na sua cara.\n");
+            sleep(3);
+            printf("Seu corpo está completamente dormente, sua perna está conectada de alguma forma, mas Wes não está contigo.\n");
+            sleep(3);
+            printf("Tudo foi em vão, as gravações do hospício estavam perdidas pela chuva, suas lágrimas se misturavam com as gotas da chuva…\n");
+            sleep(3);
+            printf("Você se levanta, dá uma olhada na sala ao seu redor, cheio de marcas e símbolos de uma espécie de religião.\n");
+            sleep(3);
+            printf("As paredes começaram a cair por conta da intensa chuva que estava afetando o lugar.\n");
+            sleep(3);
+            printf("Você foi obrigado a sair de mãos vazias do hospício, e muito mais que mãos vazias, sem um amigo que você tanto gostava…\n");
+            sleep(3);
+            printf("Ao entrar no carro, todo molhado e triste, você olha para o seu celular e vê que dia era.\n");
+            sleep(3);
+            printf("Walter: Segunda? Hahahaha……… eu mereço mesmo.\n");
+            sleep(3);
+            printf("Você dirige voltando para casa para trocar de roupa e ir trabalhar.\n");
+            sleep(3);
+            printf("É bem capaz que vai levar um esporro do seu chefe por chegar tarde e não conseguir nenhum material de pesquisa.\n");
+            sleep(3);
+            printf("Havia algo no seu bolso quando você esticou para pegar o que tinha lá, estava escrito um bilhete: “Não se esqueça, da Luz que ilumina o Abismo no seu coração”.\n");
+            sleep(3);
+            printf("Lágrimas caíram, você dirige com um peso que nunca poderá contar para ninguém, e é obrigado a tratar como se tudo aquilo não tivesse acontecido.\n");
+            sleep(3);
+            printf("Fim de Jogo. Final Mediano.\nTente conseguir os outros dois finais!");
+            neutrall++;
+            con ++;
+            conquistas();
         }
         else{
             printf("3- Você pondera sobre a possibilidade de algo que funcionou antes funcionar de novo.\n");
@@ -562,8 +569,9 @@ void neutralEnding(){//fase final neutro
             sleep(3);
             printf("Enquanto isso, Wartrox estava muito focado em seu painel e assim que termina, olha para Wes, perfura seu coração e obtém um coração luminoso.\n");
             sleep(3);
-            printf("Ele usa para explodir a criatura Nada, você é pego na explosão colateral. Fim de jogo.\n");
+            printf("Ele usa para explodir a criatura 'Nada', você é pego na explosão colateral. Fim de jogo.\n");
             sleep(3);
+            cano2++;
             morte();
         }
 }
@@ -1316,7 +1324,7 @@ void porao(){//fase 3.1.4 caminho para final bom/ final regular
         sleep(3);
         printf("Não-Wes: aquele cara deu sorte que aquela floresta tinha obstáculos...\n");
         sleep(3);
-        printf("Ele vai sofrer demais na próxima vez que eu o vê-lo,\n");
+        printf("Ele vai sofrer demais na próxima vez que eu vê-lo,\n");
         sleep(3);
         printf("dá pra acreditar que ele me acertou nas costas com um pedaço de cano? UM PEDAÇO DE CANO,\n");
         sleep(4);
@@ -1559,7 +1567,7 @@ void castelofuga(){//fase 3.1.2 caminho para final bom/ final regular
         sleep(3);
         printf("mesmo tendo passado por lá várias vezes, talvez dessa vez você encontre algo de valor.\n");
         sleep(4);
-        printf("Ao visitar a cidade, você procura cada lugar que ainda parecesse minimamente estruturado.\n");
+        printf("Ao visitar a cidade, você procura cada lugar que ainda parecia minimamente estruturado\nquando fez a sua primeira visita.\n");
         sleep(4);
         printf("Você novamente se vê diante da cabana, você decide dar uma olhada nos escombros.\n");
         sleep(3);
@@ -2145,67 +2153,60 @@ void morte() {//função de morte e checkpoints
         printf("Wes ainda precisa de você !!!\n");
         sleep(2);
         printf("Vidas restantes: %d\n", vidas);
-        do {
             printf("\nDeseja continuar jogando? [1] Sim / [0] Não: ");
             scanf("%d", &escolha);
-            if (escolha != 0 && escolha != 1) {
-                printf("Opção inválida. Digite 1 para SIM ou 0 para NÃO.\n");
-            }
-        } while (escolha != 0 && escolha != 1);
-        if (escolha == 0) {
-            printf("Obrigado por jogar!\n");
-            conquistas();
-        } else {
-            printf("Reiniciando do último checkpoint...\n");
-            sleep(3);
-            if(checkpoint == 0){
-                Escapar();
-            }
-            else if(checkpoint == 1){
-                ritual();
-            }
-            else if(checkpoint == 2){
-                cidade();
-            }
-            else if(checkpoint == 3){
-                cano();
-            }
-            else if(checkpoint == 4){
-                castelofuga();
-            }
-            else if(checkpoint == 5){
-                porao();
-            }
-            else if(checkpoint == 6){
-                mansao();
-            }
-            else if(checkpoint == 7){
-                wes();
-            }
-            else if(checkpoint == 8){
-                neutralEnding();
-            }
+            if (escolha == 0) {
+                printf("Obrigado por jogar!\n");
+                conquistas();
+            } 
+            else{
+        printf("Reiniciando do último checkpoint...\n");
+        sleep(3);
+        if(checkpoint == 0){
+            Escapar();
         }
-    } 
-    else {
-        do {
+        else if(checkpoint == 1){
+           ritual();
+        }
+        else if(checkpoint == 2){
+            cidade();
+        }
+        else if(checkpoint == 3){
+            cano();
+        }
+        else if(checkpoint == 4){
+            castelofuga();
+        }
+        else if(checkpoint == 5){
+            porao();
+        }
+        else if(checkpoint == 6){
+            mansao();
+        }
+        else if(checkpoint == 7){
+            wes();
+        }
+        else if(checkpoint == 8){
+            neutralEnding();
+        }
+    }
+    
+        }
+        else {
             printf("\nVocê perdeu todas as suas vidas...\n");
             sleep(2);
             printf("FIM DE JOGO\n");
             sleep(2);
             printf("\nDeseja jogar novamente? [1] Sim / [0] Não: ");
             scanf("%d", &escolha);
-            if (escolha != 0 && escolha != 1) {
-                printf("Opção inválida. Digite 1 para SIM ou 0 para NÃO.\n");
-            }
-        } while (escolha != 0 && escolha != 1);
-        if (escolha == 1) {
-            resetGame();
-            Escapar();
-        } else {
-            printf("Obrigado por jogar!\n");
-            conquistas();
-        }
+            if (escolha == 1) {
+                resetGame();
+                Escapar();
+            }   
+            else {
+                printf("Obrigado por jogar!\n");
+                conquistas();
+            }   
     }
 }
 
