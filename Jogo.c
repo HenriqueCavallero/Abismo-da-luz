@@ -1516,71 +1516,73 @@ void castelointerior(){//fase 3.1.3 caminho para final bom/ final regular
 }
 
 void castelofuga(){//fase 3.1.2 caminho para final bom/ final regular
-	printf("Incerto do que pode acontecer, você toca na barreira e sente uma luz saindo de seu corpo.\n");
-	sleep(4);
-	printf("A luz interage com a barreira e faz ela quebrar como se fosse pedaços de vidro,\n");
-	sleep(4);
-	printf("porém que não te cortam, apenas atravessam seu corpo, sem lhe afetar.\n");
-	sleep(4);
-	printf("O castelo, com um formato distorcido, agora está aberto.\n");
-	sleep(3);
-	printf("Você tem uma decisão a tomar.\n");
-	sleep(2);
-    printf("Para onde você quer ir?\n");
-    sleep(2);
-    printf("1- Entrar no castelo.\n");
-    printf("2- Olhar a cidade novamente.\n");
-    if(olharfloresta == 0){
-        printf("3- Olhar a floresta novamente.\n");
-    }
-    scanf("%d",&escolha);
-    if(escolha == 3 && olharfloresta == 0){
-	printf("Você decide visitar a floresta conturbada que antes foi um grande campo de batalha,\n");
-	sleep(4);
-	printf("agora está completamente marcada com vísceras e sangue roxo,\n");
-	sleep(4);
-	printf("quem sabe tem algo de útil para você lá.\n");
-	sleep(3);
-	printf("Você se aprofunda na floresta, o lugar permanece com um cheiro pútrido desde antes,\n");
-	sleep(4);
-	printf("você explora cada pedaço da floresta em procura por algo,\n");
-	sleep(3);
-	printf("nem mesmo você tem certeza do que está procurando.\n");
-	sleep(3);
-	printf("Enfim, você percebe que só perdeu tempo e decide voltar pro castelo\n");
-	sleep(3);
-	printf("logo antes que seja tarde demais.\n");
-	sleep(3);
-        olharfloresta++;
-    }
-    else if(escolha==1){
-        printf("Você decide que já perdeu tempo demais e adentra o castelo de uma vez,\n");
+	do{
+        printf("Incerto do que pode acontecer, você toca na barreira e sente uma luz saindo de seu corpo.\n");
         sleep(4);
-        printf("ainda com calafrios dos últimos ocorridos do seu caminho até aqui.\n");
-        sleep(3);
-        printf("Você mal pôde descansar apropriadamente, mas tem que seguir em frente.\n");
-        sleep(3);
-        castelointerior();
-    }
-    else if(escolha==2){
-        printf("Você decide que ainda há algo na cidade que pode lhe ajudar,\n");
-        sleep(3);
-        printf("mesmo tendo passado por lá várias vezes, talvez dessa vez você encontre algo de valor.\n");
+        printf("A luz interage com a barreira e faz ela quebrar como se fosse pedaços de vidro,\n");
         sleep(4);
-        printf("Ao visitar a cidade, você procura cada lugar que ainda parecia minimamente estruturado\nquando fez a sua primeira visita.\n");
+        printf("porém que não te cortam, apenas atravessam seu corpo, sem lhe afetar.\n");
         sleep(4);
-        printf("Você novamente se vê diante da cabana, você decide dar uma olhada nos escombros.\n");
+        printf("O castelo, com um formato distorcido, agora está aberto.\n");
         sleep(3);
-        printf("Ao levantar várias tábuas, você encontra um pedaço de carne pulsante,\n");
-        sleep(4);
-        printf("algo que parece vivo e que se adapta com o ambiente.\n");
-        sleep(3);
-        printf("Não está sangrando, não está te machucando, você decide manter, pode ser útil futuramente.\n");
-        sleep(4);
-        carnepulsante++;
-        printf("você tem: %d carne pulsante\n",carnepulsante);
-        castelointerior();
-    }
+        printf("Você tem uma decisão a tomar.\n");
+        sleep(2);
+        printf("Para onde você quer ir?\n");
+        sleep(2);
+        printf("1- Entrar no castelo.\n");
+        printf("2- Olhar a cidade novamente.\n");
+        if(olharfloresta == 0){
+            printf("3- Olhar a floresta novamente.\n");
+        }
+        scanf("%d",&escolha);
+        if(escolha == 3 && olharfloresta == 0){
+            printf("Você decide visitar a floresta conturbada que antes foi um grande campo de batalha,\n");
+            sleep(4);
+            printf("agora está completamente marcada com vísceras e sangue roxo,\n");
+            sleep(4);
+            printf("quem sabe tem algo de útil para você lá.\n");
+            sleep(3);
+            printf("Você se aprofunda na floresta, o lugar permanece com um cheiro pútrido desde antes,\n");
+            sleep(4);
+            printf("você explora cada pedaço da floresta em procura por algo,\n");
+            sleep(3);
+            printf("nem mesmo você tem certeza do que está procurando.\n");
+            sleep(3);
+            printf("Enfim, você percebe que só perdeu tempo e decide voltar pro castelo\n");
+            sleep(3);
+            printf("logo antes que seja tarde demais.\n");
+            sleep(3);
+            olharfloresta++;
+        }
+        else if(escolha==1){
+            printf("Você decide que já perdeu tempo demais e adentra o castelo de uma vez,\n");
+            sleep(4);
+            printf("ainda com calafrios dos últimos ocorridos do seu caminho até aqui.\n");
+            sleep(3);
+            printf("Você mal pôde descansar apropriadamente, mas tem que seguir em frente.\n");
+            sleep(3);
+            castelointerior();
+        }
+        else if(escolha==2){
+            printf("Você decide que ainda há algo na cidade que pode lhe ajudar,\n");
+            sleep(3);
+            printf("mesmo tendo passado por lá várias vezes, talvez dessa vez você encontre algo de valor.\n");
+            sleep(4);
+            printf("Ao visitar a cidade, você procura cada lugar que ainda parecia minimamente estruturado\nquando fez a sua primeira visita.\n");
+            sleep(4);
+            printf("Você novamente se vê diante da cabana, você decide dar uma olhada nos escombros.\n");
+            sleep(3);
+            printf("Ao levantar várias tábuas, você encontra um pedaço de carne pulsante,\n");
+            sleep(4);
+            printf("algo que parece vivo e que se adapta com o ambiente.\n");
+            sleep(3);
+            printf("Não está sangrando, não está te machucando, você decide manter, pode ser útil futuramente.\n");
+            sleep(4);
+            carnepulsante++;
+            printf("você tem: %d carne pulsante\n",carnepulsante);
+            castelointerior();
+        }
+    }while(escolha != 1 && escolha !=2);
 }
 
 void florestaFuga(){//fase 3.1.1 caminho para final bom/ final regular
